@@ -36,7 +36,7 @@ export default function BobbeePage() {
               d="M15 19l-7-7 7-7"
             />
           </svg>
-          Retour à l'accueil
+          Retour à l&apos;accueil
         </Link>
       </div>
 
@@ -86,7 +86,7 @@ export default function BobbeePage() {
           Explorez les ressources utiles
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-base leading-7 text-hive-ink/75">
-          Retrouvez tous les liens, documents et outils pour progresser rapidement et vous sentir à l'aise dès vos premiers jours.
+          Retrouvez tous les liens, documents et outils pour progresser rapidement et vous sentir à l&apos;aise dès vos premiers jours.
         </p>
         <div className="mt-8 flex flex-col gap-3 justify-center sm:flex-row">
           <Link href="/liens-utiles" className="btn-primary">

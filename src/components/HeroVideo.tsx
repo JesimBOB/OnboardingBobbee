@@ -43,7 +43,7 @@ export function HeroVideo({ title, description, videoSrc }: HeroVideoProps) {
         </div>
 
         <div className="mx-auto max-w-xl space-y-3 text-center">
-          <p className="text-xl font-semibold sm:text-2xl leading-tight">Un message d'accueil pour poser le cadre.</p>
+          <p className="text-xl font-semibold sm:text-2xl leading-tight">Un message d&apos;accueil pour poser le cadre.</p>
           <p className="text-sm leading-6 text-white/90 sm:text-base">
             Branchez ici la vidéo officielle BOBBEE. Le composant accepte déjà une source vidéo locale dès que vous en avez une.
           </p>
@@ -71,7 +71,7 @@ export function HeroVideo({ title, description, videoSrc }: HeroVideoProps) {
       <div className="relative space-y-6">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="eyebrow">Vidéo d'accueil</p>
+            <p className="eyebrow">Vidéo d&apos;accueil</p>
             <span className="inline-block rounded-full border border-hive-line/50 bg-honey-25/80 px-3 py-1.5 text-xs font-semibold text-hive-ink/70 tracking-wider">
               Lecture centrale
             </span>

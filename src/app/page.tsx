@@ -36,7 +36,7 @@ export default function HomePage() {
           <div className="space-y-3 px-1">
             <p className="eyebrow">Acces rapides</p>
             <h2 id="home-actions-title" className="font-display text-3xl leading-tight text-hive-ink sm:text-[2.15rem]">
-              Quatre portes d'entree pour demarrer sereinement.
+              Quatre portes d&apos;entree pour demarrer sereinement.
             </h2>
             <p className="text-sm leading-7 text-hive-ink/75 sm:text-base">
               Les cartes restent courtes, lisibles et accessibles, avec ouverture en nouvel onglet pour les ressources externes.

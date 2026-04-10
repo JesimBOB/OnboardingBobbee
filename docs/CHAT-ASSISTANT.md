@@ -4,57 +4,39 @@ Documentation de l'assistant conversationnel du portail BOBBEE.
 
 ## Statut actuel
 
-L'assistant est bien implemente dans le repo, mais il n'est pas deploie dans l'export statique actuel.
+L'assistant est implemente dans le repo et la structure Next expose maintenant bien les entrypoints `/chat` et `/api/chat` pour le developpement ou un runtime serveur.
 
 - En `pnpm dev`, `/chat` et `/api/chat` fonctionnent si `ANTHROPIC_API_KEY` est defini
-- En `pnpm build`, le projet sort un dossier `out/` statique
-- Avec `output: "export"`, `out/` ne contient ni `/chat` ni `/api/chat`
-- La navigation principale n'expose pas encore la page `/chat`
+- En `pnpm build`, le projet produit un dossier `out/` statique
+- Avec `output: "export"`, `out/` contient `/chat` en mode desactive et ne contient pas `/api/chat`
+- La navigation principale n'expose toujours pas la page `/chat`
 
 ## Fichiers concernes
 
+- `app/chat/page.tsx`
+- `app/api/chat/route.ts`
 - `src/app/chat/page.tsx`
-- `src/components/ChatAssistant.tsx`
 - `src/app/api/chat/route.ts`
-- `src/data/liens-utiles.json`
+- `src/components/ChatAssistant.tsx`
+- `src/data/useful-links.raw.json`
+- `src/data/useful-links.ts`
+- `src/lib/chat/config.ts`
+- `src/lib/chat/search.ts`
+- `src/lib/chat/prompt.ts`
+- `src/lib/chat/llm.ts`
+- `src/lib/chat/parser.ts`
 - `src/lib/links.ts`
-- `src/lib/chat-examples.ts`
 
 ## Flux actuel
 
 1. La page `src/app/chat/page.tsx` affiche le composant `ChatAssistant`.
 2. `src/components/ChatAssistant.tsx` envoie un `POST /api/chat`.
-3. `src/app/api/chat/route.ts` charge `src/data/liens-utiles.json`.
-4. `searchAndFilterLinks()` prefiltre les liens les plus pertinents.
-5. La route appelle Anthropic sur `https://api.anthropic.com/v1/messages`.
-6. La reponse du modele contient du texte et des references de liens sous la forme `[1] [3]`.
-7. L'API nettoie le texte, recompose les liens recommandes, puis renvoie `{ answer, links }`.
-
-## Comportement documente
-
-- La recherche locale normalise les accents et la casse via `normalizeString()`
-- Le prefiltrage cherche aujourd'hui dans `quoi` et `source`
-- Si aucun lien pertinent n'est trouve, l'API prend les 10 premiers liens comme contexte de secours
-- Le prompt demande une reponse courte, chaleureuse et borne a 5 liens recommandes maximum
-- Les numeros de liens sont retires de la reponse avant retour au client
-
-## Configuration locale
-
-### Variables d'environnement
-
-```dotenv
-ANTHROPIC_API_KEY=your_api_key_here
-```
-
-### Mise en route
-
-```powershell
-pnpm install
-Copy-Item .env.local.example .env.local
-pnpm dev
-```
-
-Puis ouvrez `http://localhost:3000/chat`.
+3. `src/app/api/chat/route.ts` valide la requete HTTP.
+4. `src/lib/chat/search.ts` prefiltre les liens les plus pertinents.
+5. `src/lib/chat/prompt.ts` construit le prompt systeme.
+6. `src/lib/chat/llm.ts` appelle Anthropic.
+7. `src/lib/chat/parser.ts` extrait les liens recommandes et nettoie le texte.
+8. L'API renvoie `{ answer, links }`.
 
 ## Contrat de reponse
 
@@ -72,33 +54,56 @@ Puis ouvrez `http://localhost:3000/chat`.
 }
 ```
 
+## Configuration locale
+
+### Variables d'environnement
+
+```dotenv
+ANTHROPIC_API_KEY=your_api_key_here
+NEXT_PUBLIC_CHAT_ENABLED=true
+```
+
+### Mise en route
+
+```powershell
+pnpm install
+Copy-Item .env.local.example .env.local
+pnpm dev
+```
+
+Puis ouvrez `http://localhost:3000/chat`.
+
+## Decision d'architecture
+
+### Decision actuelle pour la V1 demo
+
+Conserver l'export statique :
+
+- `next.config.mjs` garde `output: "export"`
+- le chat reste une capacite prete pour le dev et un futur runtime serveur
+- le build publiable actuel reste compatible avec un hebergement statique simple
+- la page `/chat` reste non cassante car elle s'affiche en mode desactive par defaut
+
+### Option A : site statique pur
+
+- Conserver `output: "export"`
+- Garder `/chat` en mode desactive dans la version statique
+- Garder l'experience complete du chat pour le dev ou un runtime serveur
+
+### Option B : site complet avec assistant
+
+- Retirer `output: "export"`
+- Deployer sur une plateforme capable d'executer les route handlers Next.js
+- Conserver `/chat` comme fonctionnalite publiee
+
 ## Limites connues
 
-- L'assistant ne fait pas partie de l'export statique actuel
+- Le chat n'appelle pas `/api/chat` dans le build statique actuel
 - Il n'y a pas encore de cache, de rate limit ni de persistance de conversation
-- `src/lib/links.test.ts` sert de documentation executable, mais aucun script `test` n'est branche dans `package.json`
-- Les liens de `src/data/liens-utiles.json` sont encore des exemples
+- La navigation principale ne reference pas encore `/chat`
 
-## Choix de deploiement pour rendre le chat disponible en prod
+## Qualite
 
-### Option A: garder le site statique
-
-Conservez `output: "export"` et deplacez `/api/chat` vers un backend separe. Le front peut alors rester heberge sur S3 / CloudFront.
-
-### Option B: deployer une vraie application Next.js
-
-Retirez l'export statique et deployez sur une plateforme capable d'executer les route handlers Next.js.
-
-## Troubleshooting
-
-### `ANTHROPIC_API_KEY` manquante
-
-Ajoutez la variable dans `.env.local`, puis redemarrez `pnpm dev`.
-
-### La page `/chat` ne sort pas dans `out/`
-
-C'est attendu avec `output: "export"`. Il faut changer de strategie de deploiement si le chat doit etre accessible en production.
-
-### La reponse ne contient pas de liens
-
-Le modele peut choisir de ne rien recommander si le contexte ne suffit pas. Verifiez aussi les donnees de `src/data/liens-utiles.json`.
+- `pnpm lint` verifie la base avec ESLint
+- `pnpm test` execute les tests Vitest disponibles
+- `src/lib/links.test.ts` couvre la recherche, le filtrage et le tri
