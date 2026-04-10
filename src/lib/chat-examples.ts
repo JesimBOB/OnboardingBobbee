@@ -51,13 +51,13 @@ export function MyComponent() {
 
 // Dans une autre route API
 import { searchAndFilterLinks } from "@/lib/links";
-import usefulLinksData from "@/data/liens-utiles.json";
+import { usefulLinks } from "@/data/useful-links";
 
 export async function GET() {
   // Vous pouvez pré-filtrer les liens dans votre logique métier
-  const relevantLinks = searchAndFilterLinks(usefulLinksData as any, {
-    query: "github",
-    categories: ["Tech"]
+  const relevantLinks = searchAndFilterLinks(usefulLinks, {
+    query: "onboarding",
+    categories: ["Onboarding & organisation"]
   });
 
   // Puis les utiliser ou les passer au chat

@@ -1,0 +1,950 @@
+[
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Prod tous",
+    "Quoi": "DOR et DOD",
+    "Lien": "https://isagri.atlassian.net/wiki/x/D4CkZwE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Prod tous",
+    "Quoi": "Tableau Maïdo-Planification + Workflow",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BwBzYgE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Prod tous",
+    "Quoi": "Tableau MAIDO- BUGS + workflow bugs",
+    "Lien": "https://isagri.atlassian.net/wiki/x/NwAtZQE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Prod tous",
+    "Quoi": "Processus GitFlow",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EICXcgE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Prod tous",
+    "Quoi": "Gestion des incidents",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BYAOVAE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Tous",
+    "Quoi": "Delivery : KPI et chiffres clés",
+    "Lien": "https://isagri.atlassian.net/wiki/x/LQCJYQE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Tous",
+    "Quoi": "Gestion d'Helpy",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DoDXjQE"
+  },
+  {
+    "Rubrique": "Agilité & pilotage",
+    "Qui": "Tous",
+    "Quoi": "Profil Gestion Interne Bobbee 2024",
+    "Lien": "https://isagri.atlassian.net/wiki/x/FIBKYgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "Browser",
+    "Lien": "https://isagri.atlassian.net/wiki/x/R4DpXwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "Architecture Logiciel",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IYDlXwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "Mise en place d’AWS X-Ray en local",
+    "Lien": "https://isagri.atlassian.net/wiki/x/GYDabAE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev QA",
+    "Quoi": "Gestion multi-environnement",
+    "Lien": "https://isagri.atlassian.net/wiki/x/PIAFbgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev QA",
+    "Quoi": "Provision d'environnement éphémère",
+    "Lien": "https://isagri.atlassian.net/wiki/x/JQC8gwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Tous",
+    "Quoi": "AWS (glossaire)",
+    "Lien": "https://isagri.atlassian.net/wiki/x/CIDpXwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "/datacy : Génération automatique des data-cy dans les composants Vue",
+    "Lien": "https://isagri.atlassian.net/wiki/x/LACLiwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "/auditCheckAuto : Génération automatique d’un AuditCheck",
+    "Lien": "https://isagri.atlassian.net/wiki/x/MYAXjQE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "Mise en place Server lambda debug",
+    "Lien": "https://isagri.atlassian.net/wiki/x/JgDaawE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "CI: ci.unit_tests_reusable.yml",
+    "Lien": "https://isagri.atlassian.net/wiki/x/CgD8VgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "CI: ci.reusable_sonarqube.yml",
+    "Lien": "https://isagri.atlassian.net/wiki/x/JYAAVwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "Documents en anomalie (AuditCheckDocument)",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IIB5XgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev QA",
+    "Quoi": "Package doc - @bobbee/external-identity",
+    "Lien": "https://isagri.atlassian.net/wiki/x/WID3hgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Tous",
+    "Quoi": "Environnements éphémères",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6560153762?atlOrigin=eyJpIjoiNzNiY2VlYmE1ZWQwNDQ5NjgwODFlYmQ5MGE2MjY1ZjAiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "ossDataTable",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AoC7TgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "OssDataTableState",
+    "Lien": "https://isagri.atlassian.net/wiki/x/B4C0TgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "PRD - Freemium API",
+    "Lien": "https://isagri.atlassian.net/wiki/x/RQDidQE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Tous",
+    "Quoi": "Découverte AWS",
+    "Lien": "https://isagri.atlassian.net/wiki/x/GoAKXQE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "V-Form",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EgALVQE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev",
+    "Quoi": "v-data-table: ajouter le tri pour une colonne correspondant à une relation en base de données",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DIBTTgE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev QA",
+    "Quoi": "Schema infra",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/whiteboard/6504415279?atlOrigin=eyJpIjoiYzBmNjU2Yjg1ZGQwNGMxNTg0ZmJjYWY3YWU2ZjEzZTkiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev QA",
+    "Quoi": "Package doc - @bobbee/webhooks",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IYC-gwE"
+  },
+  {
+    "Rubrique": "Architecture & documentation technique",
+    "Qui": "Dev QA",
+    "Quoi": "Guide Utilisateur des Webhooks Bobbee : Configuration et Notifications en Temps Réel",
+    "Lien": "https://isagri.atlassian.net/wiki/x/KYB3iQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "ES Lint",
+    "Lien": "https://isagri.atlassian.net/wiki/x/HYC6VQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "L'utilisation de new en JavaScript et TypeScript",
+    "Lien": "https://isagri.atlassian.net/wiki/x/NQBZXwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Réduction de la duplication de code avec des Helpers/Utilitaires",
+    "Lien": "https://isagri.atlassian.net/wiki/x/Q4BPXwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Utilisation de selector ::v-deep",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BABLYAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Pourquoi !important est généralement une mauvaise pratique en CSS ?",
+    "Lien": "https://isagri.atlassian.net/wiki/x/CYBCYAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Configuration et utilisation des outils de développement Chrome/Edge et du débogueur",
+    "Lien": "https://isagri.atlassian.net/wiki/x/JABFYQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Sonar Lint - installation",
+    "Lien": "https://isagri.atlassian.net/wiki/x/V4CsZAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Bonnes pratiques – Fichiers de resolvers",
+    "Lien": "https://isagri.atlassian.net/wiki/x/QwAlZQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Transaction manager",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IwCNiwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev QA",
+    "Quoi": "BDD Local Bobbee",
+    "Lien": "https://isagri.atlassian.net/wiki/x/MYGBVgE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev QA",
+    "Quoi": "Commandes utiles",
+    "Lien": "https://isagri.atlassian.net/wiki/x/HwC3VQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev QA",
+    "Quoi": "Git",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DQC9VQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev QA",
+    "Quoi": "Guide pour conserver un historique git propre en vue d’une PR",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IgCuYAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev QA",
+    "Quoi": "VS Code",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AYDCVQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev QA",
+    "Quoi": "Guide d'Utilisation des Workspaces",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DoBzfAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "[Frontend] Création d'une classe métier",
+    "Lien": "https://isagri.atlassian.net/wiki/x/boBdbQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Nomenclature des Data-cy",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AgCddQE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Modification du schema.prisma",
+    "Lien": "https://isagri.atlassian.net/wiki/x/ZwBbXwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Dev",
+    "Quoi": "Les penses-bêtes du dev",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DIBiZAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Tous",
+    "Quoi": "Processus de Validation des PR",
+    "Lien": "https://isagri.atlassian.net/wiki/x/S4BbXwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Tous",
+    "Quoi": "Processus de Saisie des RSD",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AQBfdwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Tous",
+    "Quoi": "Processus de Saisie des Bugs",
+    "Lien": "https://isagri.atlassian.net/wiki/x/JwB1ZwE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Tous",
+    "Quoi": "Processus de vie des Bugs",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DgDnbAE"
+  },
+  {
+    "Rubrique": "Développement & bonnes pratiques",
+    "Qui": "Tous",
+    "Quoi": "Mise en place environnement",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BIB8WQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "Refonte Workflows Github Actions",
+    "Lien": "https://isagri.atlassian.net/wiki/x/UIDajQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "CI environnement",
+    "Lien": "https://isagri.atlassian.net/wiki/x/oADRjQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "Process Build & Deploy",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BQAnjwE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "Build mobile - docs de référence depuis Geofolia",
+    "Lien": "https://isagri.atlassian.net/wiki/x/loDZjQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "CI/CD Processus de Release Management",
+    "Lien": "https://isagri.atlassian.net/wiki/x/qYBLdwE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "Déploiement des Stack dans Bobbee",
+    "Lien": "https://isagri.atlassian.net/wiki/x/GQCJbAE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "Backup de la base de donnée",
+    "Lien": "https://isagri.atlassian.net/wiki/x/JQCJbAE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev QA",
+    "Quoi": "Lancement des Smock Tests",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IgAXcgE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Déploiement Bobbee",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DoDjYQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Générer une version Bobbee",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EwAkawE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Modification des tickets Jira en Lot",
+    "Lien": "https://isagri.atlassian.net/wiki/x/LYD9cQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev",
+    "Quoi": "Mise en mode maintenance via la control-Center",
+    "Lien": "https://isagri.atlassian.net/wiki/x/FoCPbAE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev",
+    "Quoi": "Lancement Pas à Pas de la moulinette de base de donnée",
+    "Lien": "https://isagri.atlassian.net/wiki/x/PYCPbAE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev",
+    "Quoi": "SELF HOSTED RUNNERS",
+    "Lien": "https://isagri.atlassian.net/wiki/x/c4CWaQE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Dev",
+    "Quoi": "Monitoring & CloudWatch (Monitoring)",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6601211980?atlOrigin=eyJpIjoiODliMTYxZDRhM2NkNDQ1ODliNDQxYTkyY2M0Njg0NmIiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Astreinte",
+    "Lien": "https://groupeisagri.sharepoint.com/:x:/r/sites/ProjetMado/_layouts/15/Doc.aspx?sourcedoc=%7BF26ACA4C-D2F7-4C53-8BF9-F3D94D3A056F%7D&file=Astreinte release.xlsx&action=default&mobileredirect=true"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Suivi des disponibilités collaborateurs Bobbee",
+    "Lien": "https://groupeisagri.sharepoint.com/:x:/r/sites/ProjetMado-Managers/_layouts/15/Doc.aspx?sourcedoc=%7B71953C49-86A7-49E8-A3CA-40C30B82EB7A%7D&file=Suivi%20dispos%20Bobbee.xlsx&action=default&mobileredirect=true"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "centre de support Isagri - Service R&D",
+    "Lien": "https://isagri.atlassian.net/servicedesk/customer/portals"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Matrice des compétences fonctionnelles et techniques",
+    "Lien": "https://groupeisagri.sharepoint.com/:x:/r/sites/ProjetMado/_layouts/15/Doc.aspx?sourcedoc=%7B0FE56DC4-2147-442E-96ED-344371DDC042%7D&file=Matrice%20des%20comp%C3%A9tences%20fonctionnelles%20et%20techniques.xlsx&action=default&mobileredirect=true"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Live Share",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/pages/6300401667/Live+Share?atlOrigin=eyJpIjoiMWJjYmVjNWU4NjIyNGQzY2FhNDk3MDEyZTAxMThkYTMiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Roadmap qualité, performances, interoperabilité 2025-26",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BYAigAE"
+  },
+  {
+    "Rubrique": "DevOps / CI-CD / production",
+    "Qui": "Tous",
+    "Quoi": "Stratégie et Objectifs des Tests de Non-Régression pour Assurer la Qualité Logicielle",
+    "Lien": "https://isagri.atlassian.net/wiki/x/FYDwgAE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "DOCUMENTS - gestion des pièces comptables",
+    "Lien": "https://isagri.atlassian.net/wiki/x/g4B7bQE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "API V1 - Analyse Fonctionnelle",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EIDTawE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Facturation] - Système de Facturation",
+    "Lien": "https://isagri.atlassian.net/wiki/x/GYCPbwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Facturation] - Facture électronique",
+    "Lien": "https://isagri.atlassian.net/wiki/x/QIAIdgE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Lettre de Mission] – Gestion des Lettres de mission",
+    "Lien": "https://isagri.atlassian.net/wiki/x/NwAlcAE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Tchat] - Gestion des communications Client/Cabinet",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EIDzagE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Immobilisations]",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AgD1dgE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Comptabilité] - Balance",
+    "Lien": "https://isagri.atlassian.net/wiki/x/GgEQdwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[bobbee] - Pré-comptabilité",
+    "Lien": "https://isagri.atlassian.net/wiki/x/uQBedwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Liasses]  Impôt sur les sociétés",
+    "Lien": "https://isagri.atlassian.net/wiki/x/FoBudwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Gestion des tiers",
+    "Lien": "https://isagri.atlassian.net/wiki/x/moCIdwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Modèles de plaquettes V1 partagées par bobbee",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/database/6409584775?atl_f=PAGETREE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Liasses]  Déclaration des liasses fiscales",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AQDbigE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "[Offre] Gestion des offres",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BgCThQE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Dev",
+    "Quoi": "Docx PDF",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EoDjXgE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Dev",
+    "Quoi": "Module Export - Version 2",
+    "Lien": "https://isagri.atlassian.net/wiki/x/P4DvgQE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Dev",
+    "Quoi": "Retravail des droit d'accès aux fonctionnalités selon le profile",
+    "Lien": "https://isagri.atlassian.net/wiki/x/KADHYgE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Dev",
+    "Quoi": "Récupération des profils utilisateur via une API dédiée",
+    "Lien": "https://isagri.atlassian.net/wiki/x/G4CvZAE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Dev",
+    "Quoi": "Restrictions d'accès au schéma GraphQL",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BYBocAE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Fonctionnement Offre",
+    "Lien": "https://isagri.atlassian.net/wiki/x/YoB3fAE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Fonctionnement Profil",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EoC6fQE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Reprise immobilisations",
+    "Lien": "https://isagri.atlassian.net/wiki/x/P4CgYwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Company ( Dossiers ) - Archivage d'un dossier",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AYDzYwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Emprunts",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6074662961?atlOrigin=eyJpIjoiNjFlZmRkODhjMTQ0NDBkNmE5MjY5OGRjYWZiZTlkYzIiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Fiscal / TVA",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6128140387?atlOrigin=eyJpIjoiYjZmMTc0ZDYyMjg0NDI1Mzg2YWY2ZmQyNzM1OGEzMDYiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "GEST - LM - Affichage du total des prestations",
+    "Lien": "https://isagri.atlassian.net/wiki/x/f4DBdQE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "GEST - LM - Modifier les caractéristiques tarifaires d’une prestation",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AgAidgE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "FACTURE - Génération du XML",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BgDFiwE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "FACTURE - Gestion de la TVA",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EoAGkAE"
+  },
+  {
+    "Rubrique": "Métier & analyse",
+    "Qui": "Tous",
+    "Quoi": "Stack technique",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BIATVAE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Tous",
+    "Quoi": "Contact référent Outils onboarding",
+    "Lien": "jsimoni@groupeisagri.com"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Tous",
+    "Quoi": "Organigramme MAIDO public",
+    "Lien": "https://app.klaxoon.com/participate/board/WF2N6AF"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Dev",
+    "Quoi": "Guide d'Onboarding Développeur Maïdo",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AYCLbwE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Dev",
+    "Quoi": "Guide d'Onboarding Développeur",
+    "Lien": "https://isagri.atlassian.net/wiki/x/A4AmUwE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Dev",
+    "Quoi": "Initialisation du projet Bobbee sur WSL (Ubuntu)",
+    "Lien": "https://isagri.atlassian.net/wiki/x/OICokQE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Dev",
+    "Quoi": "Informations dev  diverses  (type FAQ)",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/5733351437?atlOrigin=eyJpIjoiOWIzMTVlZWYzNzU1NDBjMDk1MWZkYTg4MmU1MmRiZWMiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "PO",
+    "Quoi": "Guide d'Onboarding PO",
+    "Lien": "https://isagri.atlassian.net/wiki/x/CgAxUwE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "QA",
+    "Quoi": "Guide d'Onboarding QA -Maïdo",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AoDDcQE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "QA",
+    "Quoi": "Guide d'Onboarding QA",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DIAnUwE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "SL",
+    "Quoi": "Cheklist Manager pour Onboarding nouveau arrivant",
+    "Lien": "https://isagri.atlassian.net/wiki/x/A4B_dwE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Tous",
+    "Quoi": "Matrice des compétences fonctionnelles et techniques",
+    "Lien": "https://isagri.atlassian.net/wiki/x/NIB1XgE"
+  },
+  {
+    "Rubrique": "Onboarding & organisation",
+    "Qui": "Tous",
+    "Quoi": "Tutoriaux directement accessibles depuis l'appliication BOBBEE",
+    "Lien": null
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Vision Produit",
+    "Lien": "https://isagri.atlassian.net/wiki/x/LoCdYgE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Présentation \"BOBBEE by market \"",
+    "Lien": "https://docs.groupeisa.com/bobbee/Pr%C3%A9sentation%20et%20philosophie.mp4"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Viva engage",
+    "Lien": "https://engage.cloud.microsoft/main/org/groupeisagri.com/feed"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "JIRA pour les débutants",
+    "Lien": "https://isagri.atlassian.net/wiki/x/LIC5VQE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Confluence pour les débutants",
+    "Lien": "https://isagri.atlassian.net/wiki/x/FAC7VQE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Liens entre Jira et Confluence",
+    "Lien": "https://isagri.atlassian.net/wiki/x/F4DBVQE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "FAQ Jira et Confluence",
+    "Lien": "https://isagri.atlassian.net/wiki/x/5gG8VQE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Jira & confluence Ressources supplémentaires et support",
+    "Lien": "https://isagri.atlassian.net/wiki/x/HADBVQE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Connexion JIRA & Présentation globale des tickets (Guide post migration)",
+    "Lien": "https://isagri.atlassian.net/wiki/x/HoC5XgE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Validation & Amélioration de la phase d'intégration",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DgA2YwE"
+  },
+  {
+    "Rubrique": "Outils & collaboration",
+    "Qui": "Tous",
+    "Quoi": "Astuces Jira",
+    "Lien": "https://isagri.atlassian.net/wiki/x/DIC4VQE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Traçabilité & Gestion des Tests Manuels sur Jira x Confluence",
+    "Lien": "https://isagri.atlassian.net/wiki/x/CQDSVgE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Traçabilité de l'automatisation et tache transverse QA",
+    "Lien": "https://isagri.atlassian.net/wiki/x/IwB7YgE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Tous",
+    "Quoi": "Processus de tests avant push (TU & E2E) local",
+    "Lien": "https://isagri.atlassian.net/wiki/x/QIB9aQE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Processus de Préparation de Convergence",
+    "Lien": "https://isagri.atlassian.net/wiki/x/zwDbawE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "CI: ci.frontend-components-cypress.yml",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BwDOXgE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "cd.frontend-e2e-cypress.yml",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/pages/5888442372/cd.frontend-e2e-cypress.yml#%F0%9F%93%8C-Documentation-du-Workflow-GitHub-Actions-%3A-CD-Frontend-Tests-E2E-Cypress"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Template BUG",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AgASgAE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Création de Pull Request QA",
+    "Lien": "https://isagri.atlassian.net/wiki/x/BABwhQE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Astuces de Test / d'Automatisation",
+    "Lien": "https://isagri.atlassian.net/wiki/x/QIA3VwE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "Contrôles d'accès back-end : @CheckAccess",
+    "Lien": "https://isagri.atlassian.net/wiki/x/EgDRXwE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "Contrôles d'accès router : checkProfile + checkOffer",
+    "Lien": "https://isagri.atlassian.net/wiki/x/KACiYAE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "Contrôles d'accès Front-end: checkPermission + checkOffer",
+    "Lien": "https://isagri.atlassian.net/wiki/x/OYCWYAE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "Tests Frontend (DEV)",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6137872392?atlOrigin=eyJpIjoiYTU3ZDFhZWIyZDcwNDZiMGE1MDQ4NmJkNzYzNzVjOTAiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "Dev",
+    "Quoi": "Tests Backend (DEV)",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6137937926?atlOrigin=eyJpIjoiMDEwMGI3MzFhMGVkNDJlYzhlNjZiMTI4YzYzMjExMDQiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Tests E2E (QA)",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/5704777767?atlOrigin=eyJpIjoiZGY0NDFlNDk2N2E0NDk3MzhlNTZjOGVlMWNlMzZkMzMiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Process convergence by QA",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AwCChQE"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA",
+    "Quoi": "Vitest",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6714753246?atlOrigin=eyJpIjoiM2IxZWIwYjQ2NmI4NDgyZjkxNGYxNDNiOGZlODFhYzIiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "QA & tests",
+    "Qui": "QA SL",
+    "Quoi": "WIP - QA / SL - Relancer les E2E de CI sur son poste",
+    "Lien": "https://isagri.atlassian.net/wiki/x/AQCRcwE"
+  },
+  {
+    "Rubrique": "RH & vie d’entreprise",
+    "Qui": "Tous",
+    "Quoi": "Mon_Espace_RH",
+    "Lien": "https://monespacerh.groupeisagri.com/do/sysLogin:login?ru=%252Fpage%252FNewMyPersonalSpace"
+  },
+  {
+    "Rubrique": "RH & vie d’entreprise",
+    "Qui": "Tous",
+    "Quoi": "IsaManagement",
+    "Lien": "https://www.isamanagement.com/index.php"
+  },
+  {
+    "Rubrique": "RH & vie d’entreprise",
+    "Qui": "Tous",
+    "Quoi": "Mode d'emploi chatbot RH",
+    "Lien": "https://groupeisagri.sharepoint.com/sites/infosisagrifrance/Documents%20partages/Apps/Yammer/Mode%20d%27emploi%20Chatbot%201.pdf"
+  },
+  {
+    "Rubrique": "RH & vie d’entreprise",
+    "Qui": "Tous",
+    "Quoi": "NDF Jenji",
+    "Lien": "https://app.jenji.io/login?redirectTo=%2Fdashboard"
+  },
+  {
+    "Rubrique": "RH & vie d’entreprise",
+    "Qui": null,
+    "Quoi": "CSE",
+    "Lien": "https://cseisagri.opence.fr/connexion"
+  },
+  {
+    "Rubrique": "Sécurité",
+    "Qui": "Tous",
+    "Quoi": "Backlog Communautés (Dev, QA, FinOps, Sécurité…)",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/database/6439010399?atlOrigin=eyJpIjoiZmYwMTU0Y2EwZmUzNGEzYWIyYWY5YmExMGRmOGJiYTkiLCJwIjoiYyJ9"
+  },
+  {
+    "Rubrique": "Sécurité",
+    "Qui": "Tous",
+    "Quoi": "LockSelf",
+    "Lien": "https://groupeisagri.lockself-cloud.com/application/index.html#/login"
+  },
+  {
+    "Rubrique": "Sécurité",
+    "Qui": "Tous",
+    "Quoi": "Stratégie qualité et sécurité",
+    "Lien": "https://isagri.atlassian.net/wiki/x/KgBEbwE"
+  },
+  {
+    "Rubrique": "Sécurité",
+    "Qui": "Tous",
+    "Quoi": "LockSelf - Structuration des équipes et dossiers partagés",
+    "Lien": "https://isagri.atlassian.net/wiki/x/B4DGXwE"
+  },
+  {
+    "Rubrique": "Sécurité",
+    "Qui": "Tous",
+    "Quoi": "Demandes dérogation Quality-Gate",
+    "Lien": "https://isagri.atlassian.net/wiki/spaces/BO/folder/6278709301?atlOrigin=eyJpIjoiZDIyODc0Y2Q5MjRjNGIzMTlhMWM5NDVlMzRmNmM1NzUiLCJwIjoiYyJ9"
+  }
+]

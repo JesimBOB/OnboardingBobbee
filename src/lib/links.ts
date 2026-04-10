@@ -16,7 +16,7 @@ export function normalizeString(str: string): string {
 
 /**
  * Effectue une recherche plein texte sur un tableau de liens utiles
- * Cherche dans: quoi (titre), source
+ * Cherche dans: quoi, source, categorie, qui, type
  * Retourne les liens qui correspondent à la requête
  */
 export function searchLinks(
@@ -30,7 +30,13 @@ export function searchLinks(
   const normalizedQuery = normalizeString(query);
 
   return links.filter((link) => {
-    const searchableFields = [link.quoi, link.source];
+    const searchableFields = [
+      link.quoi,
+      link.source,
+      link.categorie,
+      link.qui,
+      link.type
+    ];
     return searchableFields.some((field) =>
       normalizeString(field).includes(normalizedQuery)
     );

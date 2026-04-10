@@ -2,18 +2,15 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import usefulLinksData from "@/data/liens-utiles.json";
 import { LinkCard } from "@/components/LinkCard";
 import { SearchBar } from "@/components/SearchBar";
 import { FilterSelect } from "@/components/FilterSelect";
 import {
   searchAndFilterLinks,
   getFilterOptions,
-  normalizeString
 } from "@/lib/links";
-import type { UsefulLink } from "@/types";
+import { usefulLinks } from "@/data/useful-links";
 
-const usefulLinks = usefulLinksData as UsefulLink[];
 const filterOptions = getFilterOptions(usefulLinks);
 
 export default function UsefulLinksPage() {
@@ -64,7 +61,7 @@ export default function UsefulLinksPage() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
         </div>
         <div>
@@ -166,7 +163,7 @@ export default function UsefulLinksPage() {
               Aucun résultat trouvé
             </h2>
             <p className="text-sm text-hive-ink/75">
-              Essayez d'ajuster votre recherche ou vos filtres.
+              Essayez d&apos;ajuster votre recherche ou vos filtres.
             </p>
           </div>
           <button onClick={resetFilters} className="btn-primary mx-auto">
@@ -183,4 +180,3 @@ export default function UsefulLinksPage() {
     </div>
   );
 }
-
