@@ -61,6 +61,7 @@ export default function BobbeePage() {
           {bobbeeData.sections.map((section) => (
             <article
               key={section.id}
+              id={section.id}
               className="panel flex flex-col p-8 transition hover:shadow-lg"
             >
               <p className="eyebrow">{section.title}</p>
@@ -97,4 +98,3 @@ export default function BobbeePage() {
     </div>
   );
 }
-
