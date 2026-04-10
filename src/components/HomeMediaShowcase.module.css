@@ -1,0 +1,419 @@
+.section {
+  position: relative;
+  padding: 18px 0 44px;
+}
+
+.shell {
+  position: relative;
+  width: min(1360px, calc(100% - 24px));
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.intro {
+  margin: 0 auto;
+  max-width: 760px;
+  text-align: center;
+  animation: fadeUpSoft 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: #9f7425;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 20px;
+  color: #3f2c1d;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.55rem, 3.2vw, 4.1rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+.description {
+  margin: 0 auto 42px;
+  max-width: 620px;
+  color: rgba(75, 53, 36, 0.78);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.mediaZone {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px minmax(640px, 760px) 220px;
+  grid-template-areas:
+    "onboarding video history"
+    "installation video organigram";
+  justify-content: center;
+  align-items: center;
+  column-gap: 24px;
+  row-gap: 22px;
+  padding-top: 12px;
+  padding-bottom: 40px;
+  background:
+    radial-gradient(circle at center, rgba(245, 228, 191, 0.35) 0%, rgba(245, 228, 191, 0.14) 28%, rgba(245, 228, 191, 0) 58%);
+}
+
+.mediaZone::before {
+  content: "";
+  position: absolute;
+  inset: -16px -22px;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at top center, rgba(248, 216, 116, 0.18), rgba(248, 216, 116, 0) 54%),
+    linear-gradient(180deg, rgba(255, 249, 238, 0.42), rgba(255, 249, 238, 0));
+  opacity: 0.92;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sideCard,
+.videoWrap {
+  position: relative;
+  z-index: 1;
+}
+
+.sideCard {
+  display: block;
+  width: 220px;
+  justify-self: center;
+  text-decoration: none;
+  color: inherit;
+  animation: fadeUpSoft 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.sideFigure {
+  margin: 0;
+}
+
+.cardMedia {
+  position: relative;
+  height: 132px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 168, 72, 0.2);
+  border-radius: 28px;
+  background: rgba(255, 250, 242, 0.55);
+  box-shadow: 0 10px 24px rgba(90, 67, 28, 0.08);
+  backdrop-filter: blur(10px);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.cardImage {
+  display: block;
+  object-fit: cover;
+}
+
+.cardCaption {
+  margin-top: 12px;
+  color: #4b3524;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.sideCard:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.sideCard:hover .cardMedia {
+  border-color: rgba(214, 168, 72, 0.32);
+  box-shadow: 0 14px 28px rgba(90, 67, 28, 0.11);
+}
+
+.sideCard:hover .cardImage {
+  transform: scale(1.03);
+  transition: transform 220ms ease;
+}
+
+.sideCard:focus-visible {
+  outline: 2px solid rgba(201, 133, 41, 0.74);
+  outline-offset: 4px;
+}
+
+.cardOnboarding {
+  grid-area: onboarding;
+}
+
+.cardInstallation {
+  grid-area: installation;
+}
+
+.cardHistory {
+  grid-area: history;
+}
+
+.cardOrganigram {
+  grid-area: organigram;
+}
+
+.videoWrap {
+  grid-area: video;
+  animation: fadeScaleSoft 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.videoWrap::before {
+  content: "";
+  position: absolute;
+  inset: -26px -34px;
+  border-radius: 48px;
+  background: radial-gradient(circle at center, rgba(244, 222, 177, 0.5), rgba(244, 222, 177, 0.22) 34%, rgba(244, 222, 177, 0) 72%);
+  opacity: 0.72;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.videoCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 168, 72, 0.55);
+  border-radius: 36px;
+  background: linear-gradient(180deg, #f4ead7 0%, #efe2cc 100%);
+  box-shadow: 0 18px 40px rgba(116, 82, 32, 0.12);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  cursor: pointer;
+  object-fit: contain;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(255, 250, 242, 0.9), rgba(255, 250, 242, 0) 48%),
+    linear-gradient(180deg, rgba(244, 234, 215, 0.96), rgba(239, 226, 204, 0.92));
+  outline: none;
+}
+
+.video:focus-visible {
+  box-shadow: inset 0 0 0 3px rgba(214, 168, 72, 0.45);
+}
+
+.playBadge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.playBadge::before {
+  content: "";
+  width: 92px;
+  height: 92px;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 999px;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.95), rgba(255, 244, 222, 0.82));
+  box-shadow: 0 16px 36px rgba(103, 72, 28, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.playIcon {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  margin-left: 6px;
+  fill: #a06e21;
+}
+
+.soundHint {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translate(-50%, 10px);
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(74, 52, 23, 0.76), rgba(74, 52, 23, 0.58));
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  box-shadow: 0 10px 24px rgba(53, 39, 25, 0.18);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+
+.soundHintVisible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (min-width: 768px) {
+  .shell {
+    width: min(1360px, calc(100% - 64px));
+  }
+}
+
+@media (max-width: 1180px) {
+  .mediaZone {
+    grid-template-columns: 200px minmax(520px, 1fr) 200px;
+    column-gap: 20px;
+  }
+
+  .sideCard {
+    width: 200px;
+  }
+
+  .cardMedia {
+    height: 126px;
+  }
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: clamp(2.2rem, 7vw, 3.3rem);
+  }
+
+  .description {
+    margin-bottom: 34px;
+  }
+
+  .mediaZone {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "video video"
+      "onboarding installation"
+      "history organigram";
+    gap: 18px;
+    padding-bottom: 28px;
+  }
+
+  .mediaZone::before {
+    inset: -10px -12px;
+    border-radius: 32px;
+  }
+
+  .sideCard {
+    width: 100%;
+  }
+
+  .videoCard,
+  .video {
+    min-height: 360px;
+    border-radius: 30px;
+  }
+
+  .playBadge::before {
+    width: 84px;
+    height: 84px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 12px 0 32px;
+  }
+
+  .intro {
+    max-width: 100%;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    letter-spacing: 0.24em;
+  }
+
+  .title {
+    margin-bottom: 16px;
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+
+  .description {
+    margin-bottom: 28px;
+    font-size: 0.96rem;
+    line-height: 1.62;
+  }
+
+  .mediaZone {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "video"
+      "onboarding"
+      "installation"
+      "history"
+      "organigram";
+  }
+
+  .videoCard,
+  .video {
+    min-height: 300px;
+    border-radius: 24px;
+  }
+
+  .cardMedia {
+    height: 172px;
+    border-radius: 24px;
+  }
+
+  .cardCaption {
+    font-size: 16px;
+  }
+
+  .playBadge::before {
+    width: 74px;
+    height: 74px;
+  }
+
+  .playIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .soundHint {
+    padding: 9px 14px;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .sideCard,
+  .videoWrap,
+  .sideCard,
+  .cardMedia,
+  .soundHint {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeScaleSoft {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
