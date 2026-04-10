@@ -1,0 +1,23 @@
+{
+  "bobbee": {
+    "title": "Qui est BOBBEE ?",
+    "videoSrc": "/images/Vidéo introduction site web.mp4",
+    "sections": [
+      {
+        "id": "histoire",
+        "title": "Notre histoire",
+        "content": "BOBBEE est née d'une conviction simple : les premiers jours en entreprise sont décisifs. Nous avons créé un portail d'onboarding qui concentre l'essentiel pour permettre aux nouveaux arrivants de comprendre rapidement le contexte, de se repérer dans la ruche et de trouver les bonnes ressources sans friction. Un accueil chaleureux, clair et rassurant."
+      },
+      {
+        "id": "mission",
+        "title": "Notre mission",
+        "content": "Donner à chaque nouvel arrivant les bons repères pour comprendre le contexte et agir vite. Nous croyons que l'onboarding n'est pas qu'une formalité administrative, mais un véritable investissement humain qui pose les bases de la confiance et de l'autonomie dès les premiers jours."
+      },
+      {
+        "id": "contexte",
+        "title": "Notre contexte",
+        "content": "Ce portail a été conçu pour être simple, maintenable et évolutif. Les contenus sont stockés en JSON local, les composants sont réutilisables, et la structure TypeScript garantit une base solide. Chaque page respecte une hiérarchie visuelle claire et une palette chaleureuse, incarnant la personnalité bienveillante de BOBBEE."
+      }
+    ]
+  }
+}

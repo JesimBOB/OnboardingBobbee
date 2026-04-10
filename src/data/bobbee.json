@@ -1,0 +1,65 @@
+{
+  "headline": "BOBBEE aide les equipes a demarrer vite, avec les bons reperes et sans friction.",
+  "introduction": "Le portail d'onboarding concentre l'essentiel pour comprendre la mission, se reperer dans la ruche et retrouver rapidement les ressources utiles.",
+  "stats": [
+    {
+      "label": "Format",
+      "value": "Portail simple"
+    },
+    {
+      "label": "Donnees",
+      "value": "JSON local"
+    },
+    {
+      "label": "Cible",
+      "value": "Produit + Tech"
+    }
+  ],
+  "pillars": [
+    {
+      "title": "Clarte",
+      "description": "Une information facile a trouver, concise et visible des le premier jour."
+    },
+    {
+      "title": "Chaleur",
+      "description": "Un accueil humain, rassurant et coherent avec l'univers BOBBEE."
+    },
+    {
+      "title": "Autonomie",
+      "description": "Des ressources actionnables pour gagner en vitesse sans se sentir seul."
+    }
+  ],
+  "sections": [
+    {
+      "id": "mission",
+      "title": "Notre mission",
+      "description": "Donner a chaque nouvel arrivant les bons reperes pour comprendre le contexte et agir vite.",
+      "bullets": [
+        "Presenter l'essentiel sans surcharge",
+        "Montrer les bons outils au bon moment",
+        "Donner confiance des les premiers jours"
+      ]
+    },
+    {
+      "id": "maniere",
+      "title": "Notre maniere de faire",
+      "description": "Une culture produit pragmatique, collaborative et orientee impact.",
+      "bullets": [
+        "Partager clairement les decisions",
+        "Favoriser les retours rapides",
+        "Construire avec les equipes terrain"
+      ]
+    },
+    {
+      "id": "premiers-pas",
+      "title": "Les premiers reflexes",
+      "description": "Quelques portes d'entree utiles pour demarrer sereinement.",
+      "bullets": [
+        "Lire la synthese BOBBEE",
+        "Parcourir les liens utiles",
+        "Identifier ses interlocuteurs cles"
+      ]
+    }
+  ]
+}
+

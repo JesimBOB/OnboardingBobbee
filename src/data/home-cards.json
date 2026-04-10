@@ -1,0 +1,38 @@
+[
+  {
+    "id": "card-bobbee",
+    "eyebrow": "Culture",
+    "title": "BOBBEE",
+    "description": "Comprendre la mission, les reperes et le ton de la ruche.",
+    "href": "/bobbee",
+    "linkType": "internal",
+    "icon": "hive"
+  },
+  {
+    "id": "card-orga",
+    "eyebrow": "Equipe",
+    "title": "Organigramme",
+    "description": "Identifier rapidement les interlocuteurs cles et les relais utiles.",
+    "href": "https://klaxoon.com/",
+    "linkType": "external",
+    "icon": "team"
+  },
+  {
+    "id": "card-setup",
+    "eyebrow": "Demarrage",
+    "title": "Installation du poste",
+    "description": "Retrouver les etapes de configuration pour devenir operationnel sans friction.",
+    "href": "https://www.atlassian.com/software/confluence",
+    "linkType": "external",
+    "icon": "setup"
+  },
+  {
+    "id": "card-links",
+    "eyebrow": "Raccourcis",
+    "title": "Liens utiles",
+    "description": "Retrouver les ressources et les acces essentiels des premiers jours.",
+    "href": "/liens-utiles",
+    "linkType": "internal",
+    "icon": "links"
+  }
+]
