@@ -19,6 +19,17 @@ export type UsefulLink = {
   publicOrder?: number;
 };
 
+export type ChatLink = Pick<UsefulLink, "id" | "quoi" | "source" | "url">;
+
+export type ChatRequest = {
+  message: string;
+};
+
+export type ChatResponse = {
+  answer: string;
+  links: ChatLink[];
+};
+
 export type BobbeeStat = {
   label: string;
   value: string;

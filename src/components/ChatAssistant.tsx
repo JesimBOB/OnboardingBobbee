@@ -1,17 +1,14 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { isChatEnabled } from "@/lib/chat/config";
+import type { ChatLink, ChatResponse } from "@/types";
 
 type Message = {
   id: string;
   role: "user" | "assistant";
   content: string;
-  links?: Array<{
-    id: string;
-    quoi: string;
-    source: string;
-    url: string;
-  }>;
+  links?: ChatLink[];
 };
 
 export function ChatAssistant() {
@@ -19,7 +16,9 @@ export function ChatAssistant() {
     {
       id: "init-1",
       role: "assistant",
-      content: "Bonjour ! Je suis l'assistant BOBBEE. Je peux vous aider à trouver les ressources et liens utiles pour démarrer. Posez-moi votre question ! 👋"
+      content: isChatEnabled
+        ? "Bonjour ! Je suis l'assistant BOBBEE. Je peux vous aider a trouver les ressources et liens utiles pour demarrer. Posez-moi votre question !"
+        : "L'assistant n'est pas disponible dans cette version statique. Il reste testable en local et pret pour un futur runtime serveur."
     }
   ]);
   const [input, setInput] = useState("");
@@ -27,18 +26,16 @@ export function ChatAssistant() {
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Scroll vers le dernier message
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    if (!isChatEnabled || !input.trim() || isLoading) {
+      return;
+    }
 
     const userMessage: Message = {
       id: `msg-${Date.now()}`,
@@ -46,7 +43,7 @@ export function ChatAssistant() {
       content: input
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    setMessages((previousMessages) => [...previousMessages, userMessage]);
     setInput("");
     setIsLoading(true);
     setError(null);
@@ -62,24 +59,31 @@ export function ChatAssistant() {
         throw new Error("Erreur lors de la communication avec l'assistant");
       }
 
-      const data = await response.json();
+      const data = (await response.json()) as ChatResponse;
 
       const assistantMessage: Message = {
         id: `msg-${Date.now()}`,
         role: "assistant",
         content: data.answer,
-        links: data.links || []
+        links: data.links
       };
 
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Une erreur est survenue");
-      const errorMessage: Message = {
-        id: `msg-${Date.now()}`,
-        role: "assistant",
-        content: "Désolé, je n'ai pas pu traiter votre question. Essayez reformuler votre demande ! 😊"
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages((previousMessages) => [...previousMessages, assistantMessage]);
+    } catch (caughtError) {
+      setError(
+        caughtError instanceof Error
+          ? caughtError.message
+          : "Une erreur est survenue"
+      );
+
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: `msg-${Date.now()}`,
+          role: "assistant",
+          content: "Desole, je n'ai pas pu traiter votre question. Essayez de reformuler votre demande."
+        }
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -87,7 +91,6 @@ export function ChatAssistant() {
 
   return (
     <div className="flex h-screen flex-col bg-gradient-to-br from-hive-cream via-white to-honey-25">
-      {/* En-tête */}
       <div className="border-b border-hive-line/30 bg-white/60 backdrop-blur-md">
         <div className="container-page flex items-center gap-3 py-5">
           <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-honey-400 to-honey-500 text-sm font-bold text-hive-ink shadow-soft">
@@ -104,14 +107,11 @@ export function ChatAssistant() {
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="container-page flex-1 overflow-y-auto space-y-6 py-8">
+      <div className="container-page flex-1 space-y-6 overflow-y-auto py-8">
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`flex ${
-              message.role === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
               className={`max-w-xl space-y-3 ${
@@ -120,21 +120,20 @@ export function ChatAssistant() {
                   : "space-y-4"
               }`}
             >
-              {message.role === "assistant" && (
-                <p className="text-sm leading-6 text-hive-ink">
-                  {message.content}
-                </p>
-              )}
+              <p
+                className={
+                  message.role === "user"
+                    ? "text-sm font-medium leading-6"
+                    : "text-sm leading-6 text-hive-ink"
+                }
+              >
+                {message.content}
+              </p>
 
-              {message.role === "user" && (
-                <p className="text-sm leading-6 font-medium">{message.content}</p>
-              )}
-
-              {/* Afficher les liens si présents */}
               {message.links && message.links.length > 0 && (
                 <div className="space-y-3 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-wider text-hive-ink/70">
-                    📚 Ressources recommandées
+                    Ressources recommandees
                   </p>
                   <div className="space-y-2">
                     {message.links.map((link) => (
@@ -143,7 +142,7 @@ export function ChatAssistant() {
                         href={link.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-start gap-3 rounded-2xl border border-hive-line/40 bg-white/70 p-3.5 transition-all duration-250 hover:bg-white hover:border-honey-300/60 hover:shadow-soft"
+                        className="flex items-start gap-3 rounded-2xl border border-hive-line/40 bg-white/70 p-3.5 transition-all duration-250 hover:border-honey-300/60 hover:bg-white hover:shadow-soft"
                       >
                         <div className="mt-0.5 flex-shrink-0">
                           <svg
@@ -160,11 +159,11 @@ export function ChatAssistant() {
                             />
                           </svg>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-hive-ink line-clamp-2">
+                        <div className="min-w-0 flex-1">
+                          <p className="line-clamp-2 text-sm font-semibold text-hive-ink">
                             {link.quoi}
                           </p>
-                          <p className="text-xs text-hive-ink/60 mt-1">
+                          <p className="mt-1 text-xs text-hive-ink/60">
                             {link.source}
                           </p>
                         </div>
@@ -181,12 +180,18 @@ export function ChatAssistant() {
           <div className="flex justify-start">
             <div className="space-y-2">
               <div className="flex gap-2">
-                <div className="h-2.5 w-2.5 rounded-full bg-honey-400 animate-bounce" />
-                <div className="h-2.5 w-2.5 rounded-full bg-honey-400 animate-bounce" style={{ animationDelay: "0.1s" }} />
-                <div className="h-2.5 w-2.5 rounded-full bg-honey-400 animate-bounce" style={{ animationDelay: "0.2s" }} />
+                <div className="h-2.5 w-2.5 animate-bounce rounded-full bg-honey-400" />
+                <div
+                  className="h-2.5 w-2.5 animate-bounce rounded-full bg-honey-400"
+                  style={{ animationDelay: "0.1s" }}
+                />
+                <div
+                  className="h-2.5 w-2.5 animate-bounce rounded-full bg-honey-400"
+                  style={{ animationDelay: "0.2s" }}
+                />
               </div>
               <p className="text-xs text-hive-ink/60">
-                L'assistant réfléchit...
+                L&apos;assistant reflechit...
               </p>
             </div>
           </div>
@@ -198,24 +203,29 @@ export function ChatAssistant() {
           </div>
         )}
 
+        {!isChatEnabled && (
+          <div className="rounded-2xl border border-hive-line/60 bg-white/75 p-4 text-sm text-hive-ink/75 backdrop-blur-sm">
+            Activez `NEXT_PUBLIC_CHAT_ENABLED=true` sur un runtime serveur pour publier le chat.
+          </div>
+        )}
+
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Formulaire */}
       <div className="border-t border-hive-line/30 bg-white/60 backdrop-blur-md">
         <div className="container-page py-5">
           <form onSubmit={handleSubmit} className="flex gap-3">
             <input
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Posez votre question..."
-              disabled={isLoading}
+              onChange={(event) => setInput(event.target.value)}
+              placeholder={isChatEnabled ? "Posez votre question..." : "Assistant desactive dans cette version"}
+              disabled={!isChatEnabled || isLoading}
               className="flex-1 rounded-2xl border border-hive-line/50 bg-white/80 px-5 py-3.5 text-hive-ink placeholder-hive-ink/50 backdrop-blur-sm transition-all duration-250 focus:border-honey-400/70 focus:bg-white/95 focus:outline-none focus:ring-2 focus:ring-honey-400/20 disabled:opacity-50"
             />
             <button
               type="submit"
-              disabled={isLoading || !input.trim()}
+              disabled={!isChatEnabled || isLoading || !input.trim()}
               className="btn-primary disabled:opacity-50"
             >
               <svg
