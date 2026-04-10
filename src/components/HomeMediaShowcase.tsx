@@ -24,7 +24,7 @@ const leftSpotlight: Spotlight = {
   src: "/images/Image onboarding.png",
   alt: "Illustration onboarding BOBBEE",
   label: "Image onboarding",
-  sizes: "(min-width: 1280px) 24vw, (min-width: 768px) 40vw, 92vw",
+  sizes: "(min-width: 1280px) 16vw, (min-width: 768px) 18vw, 92vw",
   priority: true
 };
 
@@ -34,21 +34,21 @@ const rightSpotlights: Spotlight[] = [
     src: "/images/Image histoire de BOBBEE.png",
     alt: "Illustration histoire de BOBBEE",
     label: "Image histoire de BOBBEE",
-    sizes: "(min-width: 1280px) 18vw, (min-width: 768px) 28vw, 92vw"
+    sizes: "(min-width: 1280px) 12vw, (min-width: 768px) 12vw, 92vw"
   },
   {
     href: "/liens-utiles",
     src: "/images/Image organigramme.png",
     alt: "Illustration organigramme BOBBEE",
     label: "Image organigramme",
-    sizes: "(min-width: 1280px) 18vw, (min-width: 768px) 28vw, 92vw"
+    sizes: "(min-width: 1280px) 12vw, (min-width: 768px) 12vw, 92vw"
   },
   {
     href: "/liens-utiles",
     src: "/images/Image installation poste.png",
     alt: "Illustration installation du poste",
     label: "Image installation poste",
-    sizes: "(min-width: 1280px) 18vw, (min-width: 768px) 28vw, 92vw"
+    sizes: "(min-width: 1280px) 12vw, (min-width: 768px) 12vw, 92vw"
   }
 ];
 
@@ -166,8 +166,8 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
     <section className="relative pb-8 pt-2 sm:pb-12">
       <h1 className="sr-only">Accueil BOBBEE</h1>
 
-      <div className="grid gap-8 xl:grid-cols-[0.88fr_1.02fr_0.88fr] xl:items-start">
-        <div className="xl:pt-8">
+      <div className="grid gap-8 md:grid-cols-[0.88fr_1.02fr_0.88fr] md:items-start md:gap-5 xl:gap-8">
+        <div className="md:w-2/3 md:justify-self-end md:pt-8">
           <SpotlightFigure
             spotlight={leftSpotlight}
             imageClassName="xl:rounded-[2.25rem]"
@@ -175,11 +175,11 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
           />
         </div>
 
-        <div className="relative xl:pt-24">
+        <div className="relative md:w-[133.333%] md:justify-self-center md:pt-20">
           <div className="overflow-hidden rounded-[2.6rem]">
             <video
               ref={videoRef}
-              className="block aspect-[4/5] w-full cursor-pointer rounded-[2.6rem] object-cover focus-ring"
+              className="block aspect-[4/5] w-full cursor-pointer rounded-[2.6rem] object-contain focus-ring"
               playsInline
               preload="metadata"
               poster="/images/BOBBEE.jpg"
@@ -197,7 +197,7 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
           </div>
         </div>
 
-        <div className="space-y-5 xl:space-y-6">
+        <div className="space-y-5 md:w-2/3 md:justify-self-start md:space-y-4 xl:space-y-6">
           {rightSpotlights.map((spotlight) => (
             <SpotlightFigure key={spotlight.label} spotlight={spotlight} />
           ))}
