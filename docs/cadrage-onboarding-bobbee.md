@@ -1,229 +1,87 @@
-# Onboarding BOBBEE – Cadrage Produit & Technique (V1 → V3)
+# Onboarding BOBBEE - Cadrage produit
 
-## 🎯 Objectif
+Ce document conserve l'intention produit du portail et la replace dans l'etat reel du repo.
 
-Créer un **mini service web d’onboarding BOBBEE**, hébergé sur AWS, destiné aux nouveaux entrants (dev, QA, PO, PM, managers…).
+## Etat du repo au 2026-04-10
 
-Objectifs principaux :
+### Livre
 
-* Comprendre BOBBEE (histoire, mission)
-* Se repérer dans l’organisation
-* Installer son poste
-* Accéder rapidement aux liens utiles
+- Une home page visuelle et responsive
+- Une page `BOBBEE`
+- Une page `liens-utiles` avec recherche et filtres
+- Des contenus alimentes par JSON local
+- Un export statique genere dans `out/`
 
----
+### Partiellement livre
 
-## 🧭 Vision Produit
+- Un assistant conversationnel existe en code, mais il n'est pas inclus dans le deploiement statique actuel
 
-### V1 (démo – J+1)
+### Encore a faire
 
-Un portail simple, visuel et fonctionnel :
+- Definir la strategie de production pour l'assistant
+- Remplacer les URLs et contenus d'exemple par des donnees reelles
+- Ajouter une vraie suite de tests et une CI
+- Prevoir une administration des contenus si le projet sort du mode demo
 
-* Page d’accueil unique
-* Vidéo centrale d’introduction
-* 4 tuiles principales :
+## Objectif produit
 
-  * **BOBBEE** → vidéo dédiée
-  * **Organigramme** → Klaxoon (nouvel onglet)
-  * **Installation du poste** → Confluence (nouvel onglet)
-  * **Liens utiles** → page interne
-* Page "Liens utiles" avec :
+Construire un mini portail d'onboarding BOBBEE, simple et chaleureux, pour aider les nouveaux arrivants a:
 
-  * Recherche
-  * Filtres simples
-* Agent conversationnel (LLM) limité aux liens utiles
-* Hébergement AWS (S3)
+- comprendre rapidement la mission et l'histoire de BOBBEE
+- se reperer dans l'organisation
+- retrouver les bons outils et documents
+- gagner en autonomie des les premiers jours
 
-👉 Objectif : **démo visuelle propre, utile, crédible**
+## V1 cible
 
----
+- Portail visuel en Next.js
+- Page d'accueil avec medias et acces rapides
+- Page de presentation BOBBEE
+- Page de liens utiles avec recherche et filtres
+- Assistant borne aux ressources locales
+- Hebergement simple et rapide pour la demo
 
-### V2 (site publiable)
+## Contraintes assumees en V1
 
-* Écran d’administration intégré
-* Gestion des contenus :
+- Pas d'authentification
+- Pas de base de donnees
+- Pas d'admin back-office
+- Donnees stockees dans le repo
+- Complexite limitee pour privilegier la clarte et la vitesse de livraison
 
-  * liens utiles
-  * catégories
-  * vidéos
-  * textes
-* Mise à jour sans passer par Git
-* Suivi des évolutions documentaires
-* Backend léger (ex: DynamoDB ou équivalent)
-* Amélioration du chatbot
+## Ecart important a garder en tete
 
----
+Le repo est aujourd'hui configure pour un export statique via `next.config.mjs`. Ce choix est tres adapte a une mise en ligne simple sur S3 / CloudFront, mais il ne permet pas de publier tel quel l'assistant base sur `/api/chat`.
 
-### V3 (expérience enrichie)
+Deux trajectoires sont donc possibles:
 
-* Cartographie des compétences (fun & interactive)
-* Parcours par rôle (dev, QA, PM…)
-* Assistant avancé (texte + vocal)
-* Recherche étendue (doc interne validée)
-* Analytics d’usage
+1. garder le site statique et sortir l'assistant dans un backend dedie
+2. deployer une application Next.js avec runtime serveur
 
----
+## Directions V2 / V3
 
-## 🧱 Architecture Technique
+### V2
 
-### Stack recommandée
+- contenus reels et maintenables
+- vraie strategie de deploiement
+- meilleure observabilite
+- tests automatises
+- eventuelle interface d'administration
 
-* **Frontend** : Next.js + TypeScript
-* **UI** : Tailwind CSS
-* **Données (V1)** : JSON dans le repo
-* **Hébergement** : AWS S3 (CloudFront ensuite)
+### V3
 
-### Pourquoi ce choix
+- personnalisation par role
+- recherche et assistant enrichis
+- integrations internes
+- analytics d'usage
 
-* Rapide à développer
-* Facile à maintenir
-* Évolutif vers V2/V3
-* Compatible intégration LLM
+## Intention UX
 
----
+- ton rassurant
+- hierarchy visuelle claire
+- acces rapide aux premiers parcours utiles
+- design coherent avec l'univers BOBBEE
 
-## 📁 Structure des données (Liens utiles)
+## Principe directeur
 
-Les liens (≈150) sont structurés en JSON :
-
-```json
-[
-  {
-    "id": "lien-001",
-    "categorie": "Discovery et analyse",
-    "type": "Documentation métier",
-    "qui": "Tous",
-    "quoi": "API V1 - Analyse Fonctionnelle",
-    "url": "https://...",
-    "source": "Atlassian"
-  }
-]
-```
-
-Utilisations :
-
-* affichage
-* filtres
-* recherche
-* alimentation du chatbot
-
----
-
-## 🤖 Agent Conversationnel (V1)
-
-### Périmètre
-
-* Recherche uniquement dans les **liens utiles**
-* Pas d’accès direct à Confluence
-* Pas de RAG complexe
-
-### Fonctionnement
-
-* L’utilisateur pose une question
-* Le système filtre les liens pertinents
-* Le LLM reformule la réponse
-
-### Résultat attendu
-
-* 1 à 5 liens pertinents
-* réponse simple et utile
-
-👉 Objectif : **utile sans complexité technique excessive**
-
----
-
-## 🎨 UX / UI
-
-### Univers visuel
-
-* Thème : **ruche / abeille / miel**
-* Couleurs : beige, jaune doux, anthracite
-* Style : chaleureux, moderne, accessible
-
-### Home
-
-* Vidéo centrale
-* Image onboarding en haut à gauche
-* Tuiles cliquables
-* Message d’accueil
-
-### Pages internes
-
-* BOBBEE : vidéo + mission + histoire
-* Liens utiles : recherche + filtres + cartes
-
----
-
-## ⏱️ Plan d’exécution (8h)
-
-### 1. Setup projet (1h)
-
-* Init Next.js + Tailwind
-* Structure dossiers
-
-### 2. Home page (2h)
-
-* Layout
-* Vidéo
-* Tuiles
-
-### 3. Pages internes (1h30)
-
-* Page BOBBEE
-* Page Liens utiles
-
-### 4. Données (1h30)
-
-* Excel → JSON
-* Recherche + filtres
-
-### 5. Chatbot (1h30)
-
-* Interface simple
-* Appel LLM
-
-### 6. Déploiement (30 min)
-
-* Build
-* Upload S3
-
----
-
-## ⚠️ Périmètre volontairement exclu (V1)
-
-* Authentification
-* Base de données
-* Admin avancé
-* Voix
-* Synchronisation Confluence
-* Personnalisation utilisateur
-
-👉 Priorité : **simplicité + stabilité + démonstration**
-
----
-
-## 🚀 Positionnement de la démo
-
-> "Un portail d’onboarding BOBBEE simple, chaleureux et centralisé, permettant de découvrir l’entreprise, accéder aux ressources clés et retrouver rapidement les bons outils grâce à un assistant intelligent."
-
----
-
-## 📅 Prochaines étapes (dès lundi)
-
-1. Amélioration UX/UI
-2. Mise en place admin
-3. Connexion données dynamiques
-4. Enrichissement chatbot
-5. Publication AWS complète
-6. Cadrage V3 (compétences)
-
----
-
-## ✅ Conclusion
-
-* V1 = **démo solide et crédible**
-* Architecture pensée pour évoluer
-* Priorité à l’usage et à la clarté
-* Complexité progressive (V2 / V3)
-
-👉 Stratégie : *commencer simple, livrer vite, enrichir ensuite*
+Commencer simple, livrer une base propre, puis enrichir sans perdre la lisibilite du produit.

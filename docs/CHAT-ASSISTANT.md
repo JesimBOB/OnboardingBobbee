@@ -1,214 +1,104 @@
-# Assistant BOBBEE - Documentation
+# Assistant BOBBEE
 
-Assistant texte minimal pour le portail d'onboarding BOBBEE. Répond uniquement à partir des ressources locales disponibles.
+Documentation de l'assistant conversationnel du portail BOBBEE.
 
-## Architecture
+## Statut actuel
 
-```
-┌─────────────────────────────────────────────────────┐
-│ Frontend                                            │
-├─────────────────────────────────────────────────────┤
-│ ChatAssistant.tsx                                   │
-│ - Interface utilisateur                             │
-│ - Gestion des messages (user/assistant)             │
-│ - Affichage des liens recommandés                   │
-│ - POST /api/chat                                    │
-└──────────────────┬──────────────────────────────────┘
-                   │
-                   │ Question utilisateur
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ API Backend                                         │
-├─────────────────────────────────────────────────────┤
-│ /api/chat/route.ts                                  │
-│ 1. Pre-filtre les liens (searchAndFilterLinks)      │
-│ 2. Appelle Claude avec prompt strict                │
-│ 3. Extrait les numéros de liens [1][3]             │
-│ 4. Retourne JSON structuré {answer, links}          │
-└──────────────────┬──────────────────────────────────┘
-                   │
-                   │ Liens contexte + Prompt
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ Claude (Anthropic API)                              │
-├─────────────────────────────────────────────────────┤
-│ Système : Prompt strict contre hallucinations       │
-│ - Répond UNIQUEMENT avec les liens fournis          │
-│ - Max 5 liens par réponse                           │
-│ - Ton chaleureux et concis                          │
-│ - Cite les numéros [1][3][5]                        │
-└─────────────────────────────────────────────────────┘
-```
+L'assistant est bien implemente dans le repo, mais il n'est pas deploie dans l'export statique actuel.
 
-## Fichiers créés
+- En `pnpm dev`, `/chat` et `/api/chat` fonctionnent si `ANTHROPIC_API_KEY` est defini
+- En `pnpm build`, le projet sort un dossier `out/` statique
+- Avec `output: "export"`, `out/` ne contient ni `/chat` ni `/api/chat`
+- La navigation principale n'expose pas encore la page `/chat`
 
-### Frontend
-- **`src/components/ChatAssistant.tsx`**
-  - Composant React avec interface de chat
-  - Gestion d'état des messages
-  - Affichage des liens avec icônes
-  - Indicateur de chargement
+## Fichiers concernes
 
-### Backend
-- **`src/app/api/chat/route.ts`**
-  - Route POST pour recevoir les questions
-  - Pre-filtrage local des liens
-  - Appel à Claude API
-  - Extraction et structuration des résultats
+- `src/app/chat/page.tsx`
+- `src/components/ChatAssistant.tsx`
+- `src/app/api/chat/route.ts`
+- `src/data/liens-utiles.json`
+- `src/lib/links.ts`
+- `src/lib/chat-examples.ts`
 
-### Utilitaires
-- **`src/lib/links.ts`** (déjà existant)
-  - `searchAndFilterLinks()` pour pré-filtrer
-  - `normalizeString()` pour recherche robuste
-  - Autres fonctions de filtrage réutilisables
+## Flux actuel
 
-### Configuration
-- **`.env.local.example`**
-  - Template pour variables d'environnement
-  - Clé API Anthropic
+1. La page `src/app/chat/page.tsx` affiche le composant `ChatAssistant`.
+2. `src/components/ChatAssistant.tsx` envoie un `POST /api/chat`.
+3. `src/app/api/chat/route.ts` charge `src/data/liens-utiles.json`.
+4. `searchAndFilterLinks()` prefiltre les liens les plus pertinents.
+5. La route appelle Anthropic sur `https://api.anthropic.com/v1/messages`.
+6. La reponse du modele contient du texte et des references de liens sous la forme `[1] [3]`.
+7. L'API nettoie le texte, recompose les liens recommandes, puis renvoie `{ answer, links }`.
 
-### Documentation
-- **`src/lib/chat-examples.ts`**
-  - Exemples d'utilisation
-  - Questions de test
-  - Flux global
+## Comportement documente
 
-### Routes
-- **`src/app/chat/page.tsx`**
-  - Page dédiée au chat
-  - Accessible via `/chat`
+- La recherche locale normalise les accents et la casse via `normalizeString()`
+- Le prefiltrage cherche aujourd'hui dans `quoi` et `source`
+- Si aucun lien pertinent n'est trouve, l'API prend les 10 premiers liens comme contexte de secours
+- Le prompt demande une reponse courte, chaleureuse et borne a 5 liens recommandes maximum
+- Les numeros de liens sont retires de la reponse avant retour au client
 
-## Configuration
+## Configuration locale
 
-### 1. Obtenir une clé API Anthropic
+### Variables d'environnement
 
-1. Allez sur https://console.anthropic.com/account/keys
-2. Créez une nouvelle clé API
-3. Copiez-la
-
-### 2. Configurer .env.local
-
-```bash
-# Copier le fichier template
-cp .env.local.example .env.local
-
-# Éditer .env.local et ajouter votre clé
-ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxx
+```dotenv
+ANTHROPIC_API_KEY=your_api_key_here
 ```
 
-### 3. Redémarrer le serveur
+### Mise en route
 
-```bash
-npm run dev
+```powershell
+pnpm install
+Copy-Item .env.local.example .env.local
+pnpm dev
 ```
 
-## Utilisation
+Puis ouvrez `http://localhost:3000/chat`.
 
-### Option 1 : Page dédiée
-Accédez à `http://localhost:3000/chat`
+## Contrat de reponse
 
-### Option 2 : Intégration dans un composant
-```tsx
-import { ChatAssistant } from "@/components/ChatAssistant";
-
-export default function Page() {
-  return <ChatAssistant />;
-}
-```
-
-### Option 3 : Appel API direct
-```typescript
-const response = await fetch("/api/chat", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ message: "Comment configurer mon poste ?" })
-});
-
-const { answer, links } = await response.json();
-```
-
-## Fonctionnalités
-
-✅ **Pas d'hallucinations**
-- Prompt système strict qui force Claude à utiliser uniquement les liens fournis
-- Pre-filtrage automatique pour contextualiser la réponse
-
-✅ **Interface amie**
-- Messages user/assistant distincts
-- Affichage des liens avec icônes
-- Indicateur de chargement
-- Gestion des erreurs gracieuse
-
-✅ **Réponses structurées**
 ```json
 {
-  "answer": "Voici quelques ressources pour démarrer...",
+  "answer": "Voici quelques ressources pour demarrer...",
   "links": [
     {
       "id": "link-001",
       "quoi": "Vision produit BOBBEE",
       "source": "Confluence",
-      "url": "https://..."
+      "url": "https://example.com/vision-produit"
     }
   ]
 }
 ```
 
-✅ **Scalable**
-- Utilise les fonctions de `src/lib/links.ts`
-- Facilement réutilisable dans d'autres routes API
-- JSON local, pas de base de données externe
+## Limites connues
 
-## Questions de test
+- L'assistant ne fait pas partie de l'export statique actuel
+- Il n'y a pas encore de cache, de rate limit ni de persistance de conversation
+- `src/lib/links.test.ts` sert de documentation executable, mais aucun script `test` n'est branche dans `package.json`
+- Les liens de `src/data/liens-utiles.json` sont encore des exemples
 
-```
-"Bonjour"
-"Comment accéder au monorepo ?"
-"Je suis dev, j'ai besoin du guide d'installation"
-"Où trouver la vision produit ?"
-"Quel canal Slack pour démarrer ?"
-```
+## Choix de deploiement pour rendre le chat disponible en prod
 
-## Sécurité
+### Option A: garder le site statique
 
-- La clé API Anthropic est lue depuis `.env.local` (env var côté serveur)
-- Jamais exposée au client
-- Validations sur les inputs
-- Gestion des erreurs
+Conservez `output: "export"` et deplacez `/api/chat` vers un backend separe. Le front peut alors rester heberge sur S3 / CloudFront.
 
-## Limites et extension
+### Option B: deployer une vraie application Next.js
 
-### Actuellement
-- Max 5 liens par réponse
-- Pre-filtre sur 10 premiers liens pertinents
-- Timeout court (5s recommandé)
-
-### Améliorations futures
-- Caching des réponses fréquentes
-- Analytics sur les questions/réponses
-- Fine-tuning du prompt
-- Support multilingue
-- Intégration avec des outils externes (Slack, etc.)
-
-## Dépendances
-
-- `next` ^14.2.0
-- `react` ^18.2.0
-- `react-dom` ^18.2.0
-- Anthropic API (appel HTTP, pas de SDK npm requis)
+Retirez l'export statique et deployez sur une plateforme capable d'executer les route handlers Next.js.
 
 ## Troubleshooting
 
-### "ANTHROPIC_API_KEY n'est pas configurée"
-→ Vérifiez que `.env.local` existe et que la clé est définie
+### `ANTHROPIC_API_KEY` manquante
 
-### La réponse ne contient pas de liens
-→ Normal si Claude juge que les liens ne sont pas pertinents
-→ Vérifiez les données dans `src/data/liens-utiles.json`
+Ajoutez la variable dans `.env.local`, puis redemarrez `pnpm dev`.
 
-### Le chat ne répond pas
-→ Vérifiez les logs du serveur (`npm run dev`)
-→ Vérifiez votre quota/balance Anthropic sur la console
+### La page `/chat` ne sort pas dans `out/`
 
-### Les liens ne s'ouvrent pas
-→ Vérifiez les URLs dans `liens-utiles.json`
+C'est attendu avec `output: "export"`. Il faut changer de strategie de deploiement si le chat doit etre accessible en production.
+
+### La reponse ne contient pas de liens
+
+Le modele peut choisir de ne rien recommander si le contexte ne suffit pas. Verifiez aussi les donnees de `src/data/liens-utiles.json`.
