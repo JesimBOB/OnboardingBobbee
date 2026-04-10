@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
 type HomeMediaShowcaseProps = {
   videoSrc: string;
@@ -115,7 +115,7 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
     videoElement.muted = true;
 
     videoElement.play().catch(() => {
-      // Browsers can still block autoplay; controls remain available.
+      // Browsers can still block autoplay; manual playback stays available on click.
     });
   }, [isReady, shouldAutoplay]);
 
@@ -126,6 +126,40 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
 
     window.localStorage.setItem(VIDEO_SEEN_STORAGE_KEY, "true");
     hasMarkedViewRef.current = true;
+  };
+
+  const toggleVideoPlayback = () => {
+    const videoElement = videoRef.current;
+
+    if (!videoElement) {
+      return;
+    }
+
+    if (!videoElement.paused && videoElement.muted) {
+      videoElement.muted = false;
+      return;
+    }
+
+    if (videoElement.paused || videoElement.ended) {
+      if (videoElement.muted) {
+        videoElement.muted = false;
+      }
+
+      void videoElement.play();
+      markVideoAsSeen();
+      return;
+    }
+
+    videoElement.pause();
+  };
+
+  const handleVideoKeyDown = (event: KeyboardEvent<HTMLVideoElement>) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+    toggleVideoPlayback();
   };
 
   return (
@@ -142,64 +176,24 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
         </div>
 
         <div className="relative xl:pt-24">
-          <div className="pointer-events-none absolute left-1/2 top-[46%] hidden -translate-x-[170%] xl:flex">
-            <div className="rounded-full border border-honey-300/65 bg-white/90 px-4 py-2 text-sm font-semibold text-honey-700 shadow-soft">
-              <span className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
-                  <path
-                    d="M19 12H5m6-6-6 6 6 6"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Parcours
-              </span>
-            </div>
-          </div>
-
-          <div className="pointer-events-none absolute left-1/2 top-[46%] hidden translate-x-[72%] xl:flex">
-            <div className="rounded-full border border-honey-300/65 bg-white/90 px-4 py-2 text-sm font-semibold text-honey-700 shadow-soft">
-              <span className="flex items-center gap-2">
-                Reperes
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
-                  <path
-                    d="M5 12h14m-6-6 6 6-6 6"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-          </div>
-
-          <div className="panel overflow-hidden p-4 sm:p-5">
-            <div className="overflow-hidden rounded-[2.3rem] border border-hive-line/70 bg-white shadow-card">
-              <div className="flex items-center justify-between bg-hive-ink px-5 py-2.5 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-white/85">
-                <span>Lecture d&apos;accueil</span>
-                <span>Une seule lecture auto</span>
-              </div>
-              <div className="relative bg-[radial-gradient(circle_at_top,rgba(248,216,116,0.22),transparent_36%),linear-gradient(180deg,#fffaf1_0%,#fff4df_100%)]">
-                <video
-                  ref={videoRef}
-                  className="aspect-[4/5] w-full object-contain"
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/images/BOBBEE.jpg"
-                  aria-label="Video d'accueil BOBBEE"
-                  autoPlay={shouldAutoplay}
-                  muted={shouldAutoplay}
-                  onPlay={markVideoAsSeen}
-                >
-                  <source src={videoSrc} />
-                  Votre navigateur ne supporte pas la lecture video.
-                </video>
-              </div>
-            </div>
+          <div className="overflow-hidden rounded-[2.6rem]">
+            <video
+              ref={videoRef}
+              className="block aspect-[4/5] w-full cursor-pointer rounded-[2.6rem] object-cover focus-ring"
+              playsInline
+              preload="metadata"
+              poster="/images/BOBBEE.jpg"
+              aria-label="Video d'accueil BOBBEE. Appuyez sur Entrée ou Espace pour lire ou mettre en pause."
+              autoPlay={shouldAutoplay}
+              muted={shouldAutoplay}
+              tabIndex={0}
+              onClick={toggleVideoPlayback}
+              onKeyDown={handleVideoKeyDown}
+              onPlay={markVideoAsSeen}
+            >
+              <source src={videoSrc} />
+              Votre navigateur ne supporte pas la lecture video.
+            </video>
           </div>
         </div>
 
