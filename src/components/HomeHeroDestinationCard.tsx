@@ -28,6 +28,10 @@ function DestinationCardInner({ destination }: HomeHeroDestinationCardProps) {
           className={styles.destinationImage}
         />
       </div>
+
+      {destination.caption ? (
+        <span className={styles.destinationCaption}>{destination.caption}</span>
+      ) : null}
     </article>
   );
 }

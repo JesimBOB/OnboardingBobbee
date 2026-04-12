@@ -11,6 +11,7 @@ export type HomeHeroDestination = {
   imageSrc: string;
   imageAlt: string;
   label: string;
+  caption?: string;
   sizes: string;
   priority?: boolean;
 };
