@@ -48,7 +48,7 @@ export default function UsefulLinksPage() {
   };
 
   return (
-    <div className="space-y-10 pb-12">
+    <div className="container-page space-y-10 pb-12">
       {/* En-tête */}
       <section className="space-y-4">
         <div className="flex items-center justify-start">

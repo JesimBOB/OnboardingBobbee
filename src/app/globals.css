@@ -11,12 +11,7 @@
     min-height: 100vh;
     color: #352719;
     font-family: var(--font-body), sans-serif;
-    background:
-      radial-gradient(circle at top left, rgba(248, 216, 116, 0.25), transparent 40%),
-      radial-gradient(circle at 84% 16%, rgba(123, 143, 91, 0.08), transparent 28%),
-      radial-gradient(circle at 20% 80%, rgba(252, 236, 179, 0.15), transparent 35%),
-      linear-gradient(180deg, #fffaf1 0%, #fff5e6 50%, #fff8eb 100%);
-    background-attachment: fixed;
+    background: #ffffff;
   }
 
   * {

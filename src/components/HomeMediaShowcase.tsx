@@ -1,89 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
+import { HomeHeroDestinationCard } from "./HomeHeroDestinationCard";
 import styles from "./HomeMediaShowcase.module.css";
+import { homeHeroDestinations } from "@/data/home-hero-destinations";
 
 type HomeMediaShowcaseProps = {
   videoSrc: string;
 };
 
-type Spotlight = {
-  href: string;
-  src: string;
-  alt: string;
-  label: string;
-  sizes: string;
-  priority?: boolean;
-};
-
-type SpotlightFigureProps = {
-  spotlight: Spotlight;
-  areaClassName: string;
-  delayMs: number;
-};
-
 const VIDEO_SEEN_STORAGE_KEY = "bobbee-home-video-seen";
-
-const onboardingSpotlight: Spotlight = {
-  href: "/bobbee#mission",
-  src: "/images/Image onboarding.png",
-  alt: "Illustration onboarding BOBBEE",
-  label: "Onboarding",
-  sizes: "(min-width: 1360px) 220px, (min-width: 1180px) 220px, (min-width: 900px) 200px, 100vw",
-  priority: true
-};
-
-const installationSpotlight: Spotlight = {
-  href: "/liens-utiles",
-  src: "/images/Image installation poste.png",
-  alt: "Illustration installation du poste",
-  label: "Installation du poste",
-  sizes: "(min-width: 1360px) 220px, (min-width: 1180px) 220px, (min-width: 900px) 200px, 100vw"
-};
-
-const historySpotlight: Spotlight = {
-  href: "/bobbee#histoire",
-  src: "/images/Image histoire de BOBBEE.png",
-  alt: "Illustration histoire de BOBBEE",
-  label: "Histoire de BOBBEE",
-  sizes: "(min-width: 1360px) 220px, (min-width: 1180px) 220px, (min-width: 900px) 200px, 100vw"
-};
-
-const orgChartSpotlight: Spotlight = {
-  href: "/liens-utiles",
-  src: "/images/Image organigramme.png",
-  alt: "Illustration organigramme BOBBEE",
-  label: "Organigramme",
-  sizes: "(min-width: 1360px) 220px, (min-width: 1180px) 220px, (min-width: 900px) 200px, 100vw"
-};
-
-function SpotlightFigure({ spotlight, areaClassName, delayMs }: SpotlightFigureProps) {
-  return (
-    <Link
-      href={spotlight.href}
-      className={`${styles.sideCard} ${areaClassName}`}
-      aria-label={spotlight.label}
-      style={{ animationDelay: `${delayMs}ms` }}
-    >
-      <figure className={styles.sideFigure}>
-        <div className={styles.cardMedia}>
-          <Image
-            src={spotlight.src}
-            alt={spotlight.alt}
-            fill
-            priority={spotlight.priority}
-            sizes={spotlight.sizes}
-            className={styles.cardImage}
-          />
-        </div>
-        <figcaption className={styles.cardCaption}>{spotlight.label}</figcaption>
-      </figure>
-    </Link>
-  );
-}
 
 export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -172,29 +99,8 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
       <div className={styles.shell}>
         <h1 className="sr-only">Accueil BOBBEE</h1>
 
-        <div className={styles.intro}>
-          <p className={styles.eyebrow}>Bienvenue dans la ruche</p>
-          <h2 className={styles.title}>L&apos;onboarding BOBBEE prend vie</h2>
-          <p className={styles.description}>
-            Decouvrez la video d&apos;accueil puis les reperes essentiels qui structurent votre parcours
-            d&apos;arrivee chez BOBBEE.
-          </p>
-        </div>
-
-        <div className={styles.mediaZone}>
-          <SpotlightFigure
-            spotlight={onboardingSpotlight}
-            areaClassName={styles.cardOnboarding}
-            delayMs={220}
-          />
-
-          <SpotlightFigure
-            spotlight={installationSpotlight}
-            areaClassName={styles.cardInstallation}
-            delayMs={300}
-          />
-
-          <div className={styles.videoWrap} style={{ animationDelay: "160ms" }}>
+        <div className={styles.heroStage}>
+          <div className={styles.videoStage}>
             <div className={styles.videoCard}>
               <video
                 ref={videoRef}
@@ -238,17 +144,9 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
             </div>
           </div>
 
-          <SpotlightFigure
-            spotlight={historySpotlight}
-            areaClassName={styles.cardHistory}
-            delayMs={380}
-          />
-
-          <SpotlightFigure
-            spotlight={orgChartSpotlight}
-            areaClassName={styles.cardOrganigram}
-            delayMs={460}
-          />
+          {homeHeroDestinations.map((destination) => (
+            <HomeHeroDestinationCard key={destination.id} destination={destination} />
+          ))}
         </div>
       </div>
     </section>

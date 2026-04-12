@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFF8EB"
+  themeColor: "#FFFFFF"
 };
 
 const navigation = [
@@ -39,10 +39,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="fr">
       <body className={`${fraunces.variable} ${manrope.variable} min-h-screen text-hive-ink antialiased`}>
         <div className="flex min-h-screen flex-col">
-          <header className="border-b border-hive-line/80 bg-white/65 backdrop-blur-sm">
+          <header className="border-b border-hive-line/80 bg-white">
             <div className="container-page flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
               <Link href="/" className="flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-[1.25rem] bg-honey-400 text-lg font-bold text-hive-ink shadow-soft">
+                <span className="grid h-11 w-11 place-items-center rounded-[1.25rem] bg-honey-400 text-lg font-bold text-hive-ink">
                   B
                 </span>
                 <div>
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
           </header>
 
-          <main className="container-page flex-1 py-8 sm:py-10">{children}</main>
+          <main className="flex-1 py-8 sm:py-10">{children}</main>
 
           <Footer />
         </div>

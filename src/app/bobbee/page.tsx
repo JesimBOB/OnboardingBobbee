@@ -19,7 +19,7 @@ const bobbeeData = content.bobbee;
 
 export default function BobbeePage() {
   return (
-    <div className="space-y-10 pb-12">
+    <div className="container-page space-y-10 pb-12">
       {/* Bouton retour */}
       <div className="flex items-center justify-start">
         <Link href="/" className="btn-secondary gap-2">
