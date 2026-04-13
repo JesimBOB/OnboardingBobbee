@@ -1,22 +1,23 @@
 {
   "bobbee": {
     "title": "Qui est BOBBEE ?",
-    "videoSrc": "/images/Vidéo introduction site web.mp4",
+    "homeVideoSrc": "/images/Vid\u00e9o introduction site web.mp4",
+    "presentationVideoSrc": "https://docs.groupeisa.com/bobbee/Pr%C3%A9sentation%20et%20philosophie.mp4",
     "sections": [
       {
         "id": "histoire",
         "title": "Notre histoire",
-        "content": "BOBBEE est née d'une conviction simple : les premiers jours en entreprise sont décisifs. Nous avons créé un portail d'onboarding qui concentre l'essentiel pour permettre aux nouveaux arrivants de comprendre rapidement le contexte, de se repérer dans la ruche et de trouver les bonnes ressources sans friction. Un accueil chaleureux, clair et rassurant."
+        "content": "BOBBEE est n\u00e9e d'une conviction simple : les premiers jours en entreprise sont d\u00e9cisifs. Nous avons cr\u00e9\u00e9 un portail d'onboarding qui concentre l'essentiel pour permettre aux nouveaux arrivants de comprendre rapidement le contexte, de se rep\u00e9rer dans la ruche et de trouver les bonnes ressources sans friction. Un accueil chaleureux, clair et rassurant."
       },
       {
         "id": "mission",
         "title": "Notre mission",
-        "content": "Donner à chaque nouvel arrivant les bons repères pour comprendre le contexte et agir vite. Nous croyons que l'onboarding n'est pas qu'une formalité administrative, mais un véritable investissement humain qui pose les bases de la confiance et de l'autonomie dès les premiers jours."
+        "content": "Donner \u00e0 chaque nouvel arrivant les bons rep\u00e8res pour comprendre le contexte et agir vite. Nous croyons que l'onboarding n'est pas qu'une formalit\u00e9 administrative, mais un v\u00e9ritable investissement humain qui pose les bases de la confiance et de l'autonomie d\u00e8s les premiers jours."
       },
       {
         "id": "contexte",
         "title": "Notre contexte",
-        "content": "Ce portail a été conçu pour être simple, maintenable et évolutif. Les contenus sont stockés en JSON local, les composants sont réutilisables, et la structure TypeScript garantit une base solide. Chaque page respecte une hiérarchie visuelle claire et une palette chaleureuse, incarnant la personnalité bienveillante de BOBBEE."
+        "content": "Ce portail a \u00e9t\u00e9 con\u00e7u pour \u00eatre simple, maintenable et \u00e9volutif. Les contenus sont stock\u00e9s en JSON local, les composants sont r\u00e9utilisables, et la structure TypeScript garantit une base solide. Chaque page respecte une hi\u00e9rarchie visuelle claire et une palette chaleureuse, incarnant la personnalit\u00e9 bienveillante de BOBBEE."
       }
     ]
   }

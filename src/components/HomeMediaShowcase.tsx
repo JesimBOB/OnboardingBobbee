@@ -1,6 +1,8 @@
 "use client";
 
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 import { HomeHeroDestinationCard } from "./HomeHeroDestinationCard";
 import styles from "./HomeMediaShowcase.module.css";
@@ -147,6 +149,22 @@ export function HomeMediaShowcase({ videoSrc }: HomeMediaShowcaseProps) {
           {homeHeroDestinations.map((destination) => (
             <HomeHeroDestinationCard key={destination.id} destination={destination} />
           ))}
+        </div>
+
+        <div className={styles.linksStage}>
+          <Link href="/liens-utiles" className={styles.linksCard} aria-label="Acceder a la page des liens utiles">
+            <article className={styles.destinationSurface}>
+              <div className={`${styles.destinationMedia} ${styles.linksMedia}`}>
+                <Image
+                  src="/images/Liens documents.png"
+                  alt="Illustration vers la page des liens utiles"
+                  fill
+                  sizes="(min-width: 1600px) 350px, (min-width: 1200px) 320px, 92vw"
+                  className={styles.destinationImage}
+                />
+              </div>
+            </article>
+          </Link>
         </div>
       </div>
     </section>

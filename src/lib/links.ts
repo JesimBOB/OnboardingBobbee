@@ -53,6 +53,13 @@ export type LinkFilters = {
   sources?: string[];
 };
 
+export type UsefulLinksRoleFilter = "all" | "dev" | "qa";
+
+export type UsefulLinksHiveFilters = {
+  roles?: UsefulLinksRoleFilter[];
+  category?: string | null;
+};
+
 /**
  * Filtre un tableau de liens selon les critères fournis (logique AND)
  * Tous les filtres fournis doivent correspondre
@@ -141,6 +148,81 @@ export function getUniqueFieldValues(
 ): string[] {
   const values = new Set(links.map((link) => link[field]));
   return Array.from(values).sort();
+}
+
+/**
+ * Extrait les valeurs uniques d'un champ en conservant l'ordre d'apparition.
+ */
+export function getUniqueFieldValuesInOrder(
+  links: UsefulLink[],
+  field: keyof Pick<UsefulLink, "categorie" | "type" | "qui" | "source">
+): string[] {
+  const values = new Set<string>();
+  const orderedValues: string[] = [];
+
+  for (const link of links) {
+    const value = link[field];
+
+    if (values.has(value)) {
+      continue;
+    }
+
+    values.add(value);
+    orderedValues.push(value);
+  }
+
+  return orderedValues;
+}
+
+export function getAudienceRoleMatches(audience: string): UsefulLinksRoleFilter[] {
+  const normalizedAudience = normalizeString(audience);
+  const roles = new Set<UsefulLinksRoleFilter>();
+
+  if (normalizedAudience.includes("tous")) {
+    roles.add("all");
+    roles.add("dev");
+    roles.add("qa");
+  }
+
+  if (normalizedAudience.includes("dev")) {
+    roles.add("dev");
+  }
+
+  if (normalizedAudience.includes("qa")) {
+    roles.add("qa");
+  }
+
+  return Array.from(roles);
+}
+
+export function matchesSelectedRoles(
+  audience: string,
+  selectedRoles: UsefulLinksRoleFilter[]
+): boolean {
+  if (selectedRoles.length === 0 || selectedRoles.includes("all")) {
+    return true;
+  }
+
+  const audienceRoles = getAudienceRoleMatches(audience);
+
+  return selectedRoles.some((role) => audienceRoles.includes(role));
+}
+
+export function filterLinksForHive(
+  links: UsefulLink[],
+  filters: UsefulLinksHiveFilters = {}
+): UsefulLink[] {
+  const {
+    roles = ["all"],
+    category = null
+  } = filters;
+
+  return links.filter((link) => {
+    const matchesRole = matchesSelectedRoles(link.qui, roles);
+    const matchesCategory = category === null || link.categorie === category;
+
+    return matchesRole && matchesCategory;
+  });
 }
 
 /**

@@ -1,26 +1,49 @@
+import { existsSync, statSync } from "node:fs";
+import path from "node:path";
 import Link from "next/link";
-import { HeroVideo } from "@/components/HeroVideo";
 import siteContent from "@/data/site-content.json";
 
 type SiteContent = {
   bobbee: {
-    title: string;
-    videoSrc: string;
-    sections: Array<{
-      id: string;
-      title: string;
-      content: string;
-    }>;
+    presentationVideoSrc: string;
   };
 };
 
 const content = siteContent as SiteContent;
 const bobbeeData = content.bobbee;
 
+const historyParagraphs = [
+  "Apr\u00e8s des ann\u00e9es de frustrations, une expert-comptable et un chef d'entreprise ont vu l'opportunit\u00e9 de d\u00e9velopper l'outil qui allait changer le quotidien de leurs pairs.",
+  "Le monde comptable et financier est vou\u00e9 \u00e0 \u00e9voluer et les solutions qui l'accompagnent \u00e9galement. bobbee est n\u00e9 pour venir en r\u00e9ponse \u00e0 toutes les probl\u00e9matiques rencontr\u00e9es par les cabinets comptables et les entreprises.",
+  "En \u00e9t\u00e9 2024, bobbee int\u00e8gre le Groupe ISAGRI, un acteur majeur des logiciels de gestion pour les experts comptables et les entreprises. Il s'agit d'une alliance industrielle et digitale essentielle pour r\u00e9pondre aux enjeux de gestion des entreprises et des experts-comptables."
+];
+
+const historyImageCandidates = [
+  "/images/fondateurs-historiques.jpg",
+  "/images/fondateurs-historiques.jpeg",
+  "/images/fondateurs-historiques.png",
+  "/images/fondateurs-historiques.webp"
+];
+
+function resolveHistoryImageSrc() {
+  const publicDir = path.join(process.cwd(), "public");
+
+  for (const candidate of historyImageCandidates) {
+    const diskPath = path.join(publicDir, candidate.replace(/^\//, ""));
+
+    if (existsSync(diskPath) && statSync(diskPath).size > 1024) {
+      return candidate;
+    }
+  }
+
+  return "/images/Image histoire de BOBBEE.png";
+}
+
 export default function BobbeePage() {
+  const historyImageSrc = resolveHistoryImageSrc();
+
   return (
-    <div className="container-page space-y-10 pb-12">
-      {/* Bouton retour */}
+    <div className="container-page space-y-8 pb-12 pt-8">
       <div className="flex items-center justify-start">
         <Link href="/" className="btn-secondary gap-2">
           <svg
@@ -36,63 +59,43 @@ export default function BobbeePage() {
               d="M15 19l-7-7 7-7"
             />
           </svg>
-          Retour à l&apos;accueil
+          {"Retour \u00e0 l'accueil"}
         </Link>
       </div>
 
-      {/* Titre principal */}
-      <section className="space-y-4">
-        <p className="eyebrow">Découvrez BOBBEE</p>
-        <h1 className="font-display text-4xl leading-tight text-hive-ink sm:text-5xl">
-          {bobbeeData.title}
-        </h1>
-      </section>
+      <section id="histoire" className="mx-auto max-w-5xl space-y-8">
+        <h1 className="sr-only">Notre histoire</h1>
 
-      {/* Vidéo de présentation */}
-      <HeroVideo
-        title="La vidéo de présentation de BOBBEE"
-        description="Découvrez notre univers, notre mission et nos valeurs en un coup d'œil."
-        videoSrc={bobbeeData.videoSrc}
-      />
+        <div className="overflow-hidden rounded-3xl border border-hive-line/60 bg-white shadow-card">
+          <img
+            src={historyImageSrc}
+            alt="Les fondateurs historiques de bobbee"
+            className="h-auto w-full"
+          />
+        </div>
 
-      {/* 3 blocs texte : histoire, mission, contexte */}
-      <section className="space-y-5">
-        <div className="grid gap-5 lg:grid-cols-3">
-          {bobbeeData.sections.map((section) => (
-            <article
-              key={section.id}
-              id={section.id}
-              className="panel flex flex-col p-8 transition hover:shadow-lg"
+        <div className="panel space-y-5 p-6 sm:p-8">
+          {historyParagraphs.map((paragraph) => (
+            <p
+              key={paragraph}
+              className="text-base leading-8 text-hive-ink/80 sm:text-lg"
             >
-              <p className="eyebrow">{section.title}</p>
-              <h2 className="mt-5 font-display text-2xl leading-tight text-hive-ink">
-                {section.title === "Notre histoire"
-                  ? "Une conviction"
-                  : section.title === "Notre mission"
-                    ? "Notre engagement"
-                    : "Pensé dès le départ"}
-              </h2>
-              <p className="mt-5 flex-1 text-base leading-7 text-hive-ink/75">
-                {section.content}
-              </p>
-            </article>
+              {paragraph}
+            </p>
           ))}
         </div>
-      </section>
 
-      {/* Appel à l'action vers les ressources */}
-      <section className="panel p-8 text-center sm:p-12">
-        <p className="eyebrow">Prêt à commencer ?</p>
-        <h2 className="mt-5 font-display text-3xl leading-tight text-hive-ink sm:text-4xl">
-          Explorez les ressources utiles
-        </h2>
-        <p className="mt-4 mx-auto max-w-2xl text-base leading-7 text-hive-ink/75">
-          Retrouvez tous les liens, documents et outils pour progresser rapidement et vous sentir à l&apos;aise dès vos premiers jours.
-        </p>
-        <div className="mt-8 flex flex-col gap-3 justify-center sm:flex-row">
-          <Link href="/liens-utiles" className="btn-primary">
-            Voir les ressources
-          </Link>
+        <div className="overflow-hidden rounded-3xl border border-white/70 bg-white shadow-card">
+          <video
+            className="aspect-video w-full object-cover"
+            controls
+            preload="metadata"
+            poster="/images/BOBBEE.jpg"
+            aria-label="Video de presentation de bobbee"
+          >
+            <source src={bobbeeData.presentationVideoSrc} />
+            {"Votre navigateur ne supporte pas la lecture vid\u00e9o."}
+          </video>
         </div>
       </section>
     </div>

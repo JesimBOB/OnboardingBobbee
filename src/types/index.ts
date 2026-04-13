@@ -64,7 +64,8 @@ export type SiteContentSection = {
 export type SiteContent = {
   bobbee: {
     title: string;
-    videoSrc: string;
+    homeVideoSrc: string;
+    presentationVideoSrc: string;
     sections: SiteContentSection[];
   };
 };
