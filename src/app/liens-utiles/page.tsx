@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import { LinkCard } from "@/components/LinkCard";
@@ -36,9 +35,18 @@ const roleOptions: Array<{
   }
 ];
 
-function BeeBadge() {
+type BeeBadgeProps = {
+  className?: string;
+};
+
+type FlightPathProps = {
+  className: string;
+  d: string;
+};
+
+function BeeBadge({ className = "h-11 w-11 text-hive-ink" }: BeeBadgeProps) {
   return (
-    <svg viewBox="0 0 96 96" className="h-11 w-11 text-hive-ink" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 96 96" className={className} fill="none" aria-hidden="true">
       <ellipse cx="31" cy="30" rx="13" ry="11" fill="rgba(255,255,255,0.72)" />
       <ellipse cx="61" cy="30" rx="13" ry="11" fill="rgba(255,255,255,0.72)" />
       <ellipse cx="48" cy="52" rx="22" ry="19" fill="#F6C54F" />
@@ -51,6 +59,14 @@ function BeeBadge() {
       <path d="M57 33l5-10" stroke="#352719" strokeWidth="4" strokeLinecap="round" />
       <circle cx="33" cy="21" r="4" fill="#352719" />
       <circle cx="63" cy="21" r="4" fill="#352719" />
+    </svg>
+  );
+}
+
+function FlightPath({ className, d }: FlightPathProps) {
+  return (
+    <svg viewBox="0 0 320 180" className={className} fill="none" aria-hidden="true">
+      <path d={d} pathLength="1" />
     </svg>
   );
 }
@@ -74,6 +90,20 @@ export default function UsefulLinksPage() {
     () => getUniqueFieldValuesInOrder(usefulLinks, "categorie"),
     []
   );
+
+  const categoryRows = useMemo(() => {
+    if (categories.length === 10) {
+      return [categories.slice(0, 3), categories.slice(3, 7), categories.slice(7, 10)];
+    }
+
+    const rows: string[][] = [];
+
+    for (let index = 0; index < categories.length; index += 3) {
+      rows.push(categories.slice(index, index + 3));
+    }
+
+    return rows;
+  }, [categories]);
 
   const linksMatchingRoles = useMemo(
     () => filterLinksForHive(usefulLinks, { roles: selectedRoles }),
@@ -153,40 +183,33 @@ export default function UsefulLinksPage() {
 
   return (
     <div className={`container-page ${styles.pageShell}`}>
-      <section className={`${styles.heroCard} animate-fade-up-soft`}>
-        <div className={styles.heroText}>
-          <div className="flex items-center justify-start">
-            <Link href="/" className="btn-secondary gap-2">
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Retour a l&apos;accueil
-            </Link>
-          </div>
+      <h1 className="sr-only">Liens utiles</h1>
 
-          <p className="eyebrow mt-4">Ruche a ressources</p>
-          <h1 className="mt-4 text-hive-ink">Liens utiles</h1>
-          <p className={styles.heroHint}>
-            Une interface vive pour choisir, puis une liste nette pour ouvrir les bonnes
-            ressources sans perdre le fil.
-          </p>
-
-          <div className={styles.heroMeta}>
-            <span className={styles.heroMetaPill}>{categories.length} rubriques a explorer</span>
-            <span className={styles.heroMetaPill}>{usefulLinks.length} ressources conservees</span>
-            <span className={styles.heroMetaPill}>Filtrage instantane cote client</span>
-          </div>
-        </div>
-
-        <div className={styles.heroBee} aria-hidden="true">
-          <BeeBadge />
-        </div>
-      </section>
+      <div className={`${styles.heroSearchWrap} animate-fade-up-soft`}>
+        <label className={styles.searchField}>
+          <span className="sr-only">Rechercher dans les liens utiles</span>
+          <svg
+            className={styles.searchIcon}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+            />
+          </svg>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Rechercher un titre, une source ou un type..."
+            className={styles.searchInput}
+          />
+        </label>
+      </div>
 
       <section
         className={`${styles.hiveSection} animate-fade-up-soft`}
@@ -195,133 +218,122 @@ export default function UsefulLinksPage() {
         <div className={styles.hiveBgOne} aria-hidden="true" />
         <div className={styles.hiveBgTwo} aria-hidden="true" />
         <div className={styles.hiveGlow} aria-hidden="true" />
+        <div className={styles.hiveAccent} aria-hidden="true">
+          <FlightPath
+            className={`${styles.hivePath} ${styles.hivePathOne}`}
+            d="M18 128C78 104 112 34 188 42C236 46 266 84 302 22"
+          />
+          <FlightPath
+            className={`${styles.hivePath} ${styles.hivePathTwo}`}
+            d="M24 42C68 18 116 52 160 100C188 130 230 148 294 136"
+          />
+          <div className={`${styles.hiveBee} ${styles.hiveBeeOne}`}>
+            <div className={styles.hiveBeeShell}>
+              <BeeBadge className={styles.hiveBeeIcon} />
+            </div>
+          </div>
+          <div className={`${styles.hiveBee} ${styles.hiveBeeTwo}`}>
+            <div className={styles.hiveBeeShell}>
+              <BeeBadge className={styles.hiveBeeIconSmall} />
+            </div>
+          </div>
+        </div>
 
         <div className={styles.hiveHeader}>
-          <div>
-            <p className="eyebrow">Ruche interactive</p>
-            <h2 id="useful-links-hive-heading" className="mt-4 text-hive-ink">
-              Filtrer la recolte
-            </h2>
-            <p className={styles.hiveLead}>
-              Activez un profil, choisissez une rubrique, puis ouvrez les liens en dessous.
-              La logique met a jour les resultats tout de suite, sans changer l&apos;ordre des
-              ressources existantes.
+          <p className="eyebrow">Ruche interactive</p>
+          <h2
+            id="useful-links-hive-heading"
+            className={`text-hive-ink ${styles.hiveTitle}`}
+          >
+            Choisissez un profil puis une alveole
+          </h2>
+          <p className={styles.hiveLead}>
+            Une interface simple, legere et immediate pour trouver la bonne ressource.
+          </p>
+        </div>
+
+        <section className={styles.profileTray} aria-labelledby="role-filters-heading">
+          <div className={styles.trayHeading}>
+            <h3 id="role-filters-heading" className={`text-hive-ink ${styles.trayTitle}`}>
+              Profils
+            </h3>
+            <p className={styles.filterHint}>
+              Multi-selection OR. Le mode Tous reste le point de depart.
             </p>
           </div>
 
-          <div className={styles.hiveStat}>
-            <span className={styles.hiveStatValue}>{filteredLinks.length}</span>
-            <span>liens visibles maintenant</span>
+          <div className={styles.roleGrid}>
+            {roleOptions.map((role) => {
+              const isActive = selectedRoles.includes(role.id);
+              const chipLabel = role.id === "dev" ? "Dev" : role.label;
+
+              return (
+                <button
+                  key={role.id}
+                  type="button"
+                  className={`${styles.roleChip} ${isActive ? styles.roleChipActive : ""}`}
+                  aria-pressed={isActive}
+                  aria-label={`${chipLabel}. ${role.detail}`}
+                  onClick={() => toggleRole(role.id)}
+                >
+                  {chipLabel}
+                </button>
+              );
+            })}
           </div>
-        </div>
+        </section>
 
-        <div className={styles.filterColumns}>
-          <section className={styles.filterBlock} aria-labelledby="role-filters-heading">
-            <div className={styles.filterHeading}>
-              <div>
-                <h3 id="role-filters-heading" className="text-hive-ink">
-                  Profils
-                </h3>
-                <p className={styles.filterHint}>
-                  Multi-selection OR. Le mode Tous reste le point de depart.
-                </p>
-              </div>
-            </div>
+        <section className={styles.categoryZone} aria-labelledby="category-filters-heading">
+          <div className={styles.trayHeading}>
+            <h3 id="category-filters-heading" className={`text-hive-ink ${styles.trayTitle}`}>
+              Rubriques
+            </h3>
+            <p className={styles.filterHint}>
+              Une rubrique a la fois. Recliquez sur l&apos;alveole active pour revenir a
+              toute la ruche.
+            </p>
+          </div>
 
-            <div className={styles.roleGrid}>
-              {roleOptions.map((role) => {
-                const isActive = selectedRoles.includes(role.id);
+          <div className={styles.categoryHive}>
+            {categoryRows.map((row, rowIndex) => (
+              <div
+                key={`row-${rowIndex}`}
+                className={styles.categoryRow}
+                data-columns={row.length}
+              >
+                {row.map((category) => {
+                  const count = categoryCounts.get(category) ?? 0;
+                  const isActive = selectedCategory === category;
+                  const isDisabled = count === 0;
 
-                return (
-                  <button
-                    key={role.id}
-                    type="button"
-                    className={`${styles.roleButton} ${role.id === "all" ? styles.roleButtonAll : ""}`}
-                    aria-pressed={isActive}
-                    onClick={() => toggleRole(role.id)}
-                  >
-                    <span className={`${styles.roleSurface} ${isActive ? styles.roleActive : ""}`}>
-                      <span className={styles.roleLabel}>{role.label}</span>
-                      <span className={styles.roleDetail}>{role.detail}</span>
-                      <span className={styles.roleState}>
-                        <span className={styles.activeIcon}>{isActive ? "OK" : "+"}</span>
-                        {isActive ? "Actif" : "Filtrer"}
-                      </span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-
-          <section className={styles.filterBlock} aria-labelledby="category-filters-heading">
-            <div className={styles.filterHeading}>
-              <div>
-                <h3 id="category-filters-heading" className="text-hive-ink">
-                  Rubriques
-                </h3>
-                <p className={styles.filterHint}>
-                  Une rubrique a la fois. Recliquez sur l&apos;alveole active pour revenir a
-                  toute la ruche.
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.categoryGrid}>
-              {categories.map((category) => {
-                const count = categoryCounts.get(category) ?? 0;
-                const isActive = selectedCategory === category;
-                const isDisabled = count === 0;
-
-                return (
-                  <div key={category} className={styles.categoryWrap}>
-                    <button
-                      type="button"
-                      className={`${styles.categoryButton} ${isDisabled ? styles.categoryDisabled : ""}`}
-                      aria-pressed={isActive}
-                      disabled={isDisabled}
-                      onClick={() => toggleCategory(category)}
-                    >
-                      <span className={`${styles.categorySurface} ${isActive ? styles.categoryActive : ""}`}>
-                        <span className={styles.categoryName}>{category}</span>
-                        <span className={styles.categoryCount}>
-                          {isActive ? "Active | " : ""}
-                          {count} lien{count > 1 ? "s" : ""}
+                  return (
+                    <div key={category} className={styles.categoryWrap}>
+                      <button
+                        type="button"
+                        className={`${styles.categoryButton} ${isDisabled ? styles.categoryDisabled : ""}`}
+                        aria-pressed={isActive}
+                        disabled={isDisabled}
+                        onClick={() => toggleCategory(category)}
+                      >
+                        <span
+                          className={`${styles.categorySurface} ${isActive ? styles.categoryActive : ""}`}
+                        >
+                          <span className={styles.categoryName}>{category}</span>
+                          <span className={styles.categoryCount}>
+                            {isActive ? "Active | " : ""}
+                            {count} lien{count > 1 ? "s" : ""}
+                          </span>
                         </span>
-                      </span>
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </div>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <div className={styles.toolbar}>
-          <label className={styles.searchField}>
-            <span className="sr-only">Rechercher dans les liens utiles</span>
-            <svg
-              className={styles.searchIcon}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
-              />
-            </svg>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Rechercher un titre, une source ou un type..."
-              className={styles.searchInput}
-            />
-          </label>
-
           <div className={styles.toolbarMeta}>
             <span className={styles.metaPill}>Profils : {roleSummary}</span>
             <span className={styles.metaPill}>Rubrique : {categorySummary}</span>
@@ -347,7 +359,7 @@ export default function UsefulLinksPage() {
         <div className={styles.resultsHeader}>
           <div>
             <p className="eyebrow">Zone d&apos;ouverture</p>
-            <h2 id="results-heading" className="mt-4 text-hive-ink">
+            <h2 id="results-heading" className={`mt-4 text-hive-ink ${styles.resultsTitle}`}>
               Liens a ouvrir
             </h2>
             <p className={styles.resultsLead}>
