@@ -81,6 +81,30 @@ function formatRoleSummary(selectedRoles: UsefulLinksRoleFilter[]): string {
     .join(" + ");
 }
 
+function getCategoryLabel(category: string): string {
+  if (category === "Architecture & doc technique") {
+    return "Doc technique";
+  }
+
+  if (category === "Dev & bonnes pratiques") {
+    return "Bonnes pratiques";
+  }
+
+  if (category === "Métier & analyse") {
+    return "Métier";
+  }
+
+  if (category === "Outils & collaboration") {
+    return "Outils & media";
+  }
+
+  if (category === "Onboarding & organisation") {
+    return "Onboarding organisation";
+  }
+
+  return category === "DevOps / Production" ? "DevOps" : category;
+}
+
 export default function UsefulLinksPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRoles, setSelectedRoles] = useState<UsefulLinksRoleFilter[]>(["all"]);
@@ -151,6 +175,7 @@ export default function UsefulLinksPage() {
 
   const roleSummary = formatRoleSummary(selectedRoles);
   const categorySummary = selectedCategory ?? "Toutes les rubriques";
+  const categoryDisplaySummary = getCategoryLabel(categorySummary);
 
   const toggleRole = (role: UsefulLinksRoleFilter) => {
     setSelectedRoles((currentRoles) => {
@@ -318,7 +343,7 @@ export default function UsefulLinksPage() {
                         <span
                           className={`${styles.categorySurface} ${isActive ? styles.categoryActive : ""}`}
                         >
-                          <span className={styles.categoryName}>{category}</span>
+                          <span className={styles.categoryName}>{getCategoryLabel(category)}</span>
                           <span className={styles.categoryCount}>
                             {isActive ? "Active | " : ""}
                             {count} lien{count > 1 ? "s" : ""}
@@ -336,7 +361,7 @@ export default function UsefulLinksPage() {
         <div className={styles.toolbar}>
           <div className={styles.toolbarMeta}>
             <span className={styles.metaPill}>Profils : {roleSummary}</span>
-            <span className={styles.metaPill}>Rubrique : {categorySummary}</span>
+            <span className={styles.metaPill}>Rubrique : {categoryDisplaySummary}</span>
           </div>
 
           {hasActiveFilters ? (
@@ -364,8 +389,8 @@ export default function UsefulLinksPage() {
             </h2>
             <p className={styles.resultsLead}>
               {searchQuery.trim()
-                ? `Resultats pour "${searchQuery}" avec ${roleSummary} et ${categorySummary}.`
-                : `Profils actifs : ${roleSummary}. Rubrique : ${categorySummary}.`}
+                ? `Resultats pour "${searchQuery}" avec ${roleSummary} et ${categoryDisplaySummary}.`
+                : `Profils actifs : ${roleSummary}. Rubrique : ${categoryDisplaySummary}.`}
             </p>
           </div>
 

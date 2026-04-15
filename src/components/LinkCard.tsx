@@ -15,7 +15,7 @@ export function LinkCard({ link }: LinkCardProps) {
       <div className="relative flex items-start justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-flex items-center rounded-full border border-honey-300/50 bg-honey-50/75 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-honey-700">
-            {link.categorie}
+            {link.categorie === "Architecture & doc technique" ? "Doc technique" : link.categorie}
           </span>
           <span className="inline-flex items-center rounded-full border border-hive-line/70 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-hive-ink/70">
             {link.type}
