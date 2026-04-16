@@ -722,9 +722,9 @@
   width: 100%;
   max-width: 9.3rem;
   font-family: Inter, system-ui, sans-serif;
-  font-size: clamp(1.24rem, 0.76vw + 0.98rem, 1.62rem);
-  font-weight: 750;
-  line-height: 1.08;
+  font-size: clamp(1.02rem, 0.3vw + 0.96rem, 1.125rem);
+  font-weight: 600;
+  line-height: 1.24;
   letter-spacing: -0.01em;
   text-align: center;
   text-shadow:
@@ -1053,7 +1053,7 @@
 
   .categoryName {
     max-width: 6.6rem;
-    font-size: 1.08rem;
+    font-size: 1rem;
   }
 
   .categoryCount {
