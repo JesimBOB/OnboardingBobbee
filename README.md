@@ -1,20 +1,20 @@
 # Onboarding BOBBEE
 
-Portail d'onboarding BOBBEE construit avec Next.js 14, TypeScript et Tailwind CSS. Le projet contient une home page desktop-first avec video centrale et destinations illustrees, une page de presentation BOBBEE, un catalogue de liens utiles filtrable, et une implementation d'assistant conversationnel basee sur des ressources locales.
+Portail d'onboarding BOBBEE construit avec Next.js 14, TypeScript et Tailwind CSS. Le projet contient une home page visuelle basee sur une carte illustree interactive, une page de presentation BOBBEE, un catalogue de liens utiles filtrable, et une implementation d'assistant conversationnel basee sur des ressources locales.
 
 ## Etat actuel
 
-- Verification effectuee le 2026-04-12 avec `pnpm build`
+- Verification effectuee le 2026-04-14 avec `pnpm exec tsc --noEmit`
 - Pages exportees statiquement: `/`, `/bobbee`, `/liens-utiles`, `/chat` (desactive par defaut en production)
 - Assistant implemente en code: `/chat` et `/api/chat`
 - Decision V1 demo: conserver `output: "export"` pour le build publiable actuel
 - Consequence: le dossier `out/` embarque `/chat` en mode desactive et n'embarque pas `/api/chat`
-- Hero home actuel: fond blanc, video centrale, 4 destinations image-only, mise en page prioritairement pensee pour ecrans d'ordinateur
-- Liens du hero home: Onboarding (Confluence), Installation du poste (Confluence), Histoire de BOBBEE (section interne), Organigramme (Klaxoon)
+- Home actuelle: fond blanc, carte illustree BOBBEE land centree, video incrustee lancee au clic avec son, et 5 zones cliquables
+- Liens de la home: Onboarding (Confluence), page BOBBEE, Organigramme (Klaxoon), Liens utiles, Installation du poste (Confluence)
 
 ## Fonctionnalites disponibles
 
-- Page d'accueil avec hero video central et 4 destinations illustrees cliquables
+- Page d'accueil avec carte BOBBEE land, hotspots invisibles et video integree dans l'illustration
 - Page BOBBEE alimentee par des fichiers JSON
 - Page `liens-utiles` avec recherche, filtres multiples et tri reutilisable
 - Assistant qui prefiltre les liens locaux puis appelle Anthropic
@@ -47,20 +47,46 @@ docs/                   documentation projet
 
 Alias TypeScript: `@/*` pointe vers `src/*`.
 
-## Source de verite de la home
+## Home page actuelle
 
-La home utilise maintenant les fichiers suivants :
+### Intention
 
-- `src/components/HomeMediaShowcase.tsx` : composition du hero et logique video
-- `src/components/HomeHeroDestinationCard.tsx` : rendu d'une destination image-only
-- `src/components/HomeMediaShowcase.module.css` : layout desktop-first et responsive du hero
-- `src/data/home-hero-destinations.ts` : destinations et liens de la home
-- `src/types/home-hero.ts` : types associes au hero
-- `src/data/site-content.json` : source de `videoSrc`
+La home validée dans cette version sert de carte d'arrivee simple et immediate. L'objectif n'est pas de multiplier les blocs de contenu, mais d'offrir un point d'entree visuel unique qui oriente rapidement vers les parcours utiles.
 
-Le fichier `src/data/home-cards.json` n'est plus la source de verite de la home actuelle.
+### Choix UX/UI retenus
 
-Les cartes du hero affichent des images avec legende cartoon et peuvent pointer soit vers des routes internes, soit vers des ressources externes.
+- fond blanc et mise en page tres epuree
+- illustration centrale unique `BOBBEE land`
+- video incrustee dans l'image, declenchee au clic et non bouclee
+- hotspots invisibles pour garder l'image propre
+- navigation haute volontairement reduite a `Accueil` et `Liens utiles`
+
+### Sections et fichiers principaux
+
+- `app/page.tsx` : re-export de la page d'accueil
+- `src/app/page.tsx` : assemblage de la carte, des hotspots et de la video
+- `src/app/page.module.css` : positionnement responsive des hotspots, de la video et de son fondu
+- `public/images/carte-bobbee-land.png` : illustration principale de la home
+- `public/images/Vidéo introduction site web.mp4` : video embarquee sur la carte
+- `src/data/home-hero-destinations.ts` : URLs externes reutilisees pour les hotspots onboarding, organigramme et installation
+
+### Ce qui est volontairement laisse pour plus tard
+
+- systeme de hotspots configurable ou administre
+- refacto generique de la carte en composants plus abstraits
+- enrichissement editorial de la home avec nouveaux blocs ou cartes
+- comportement video plus riche (controles avances, etats supplementaires, analytics)
+
+### Ce qui a ete nettoye
+
+- petit style inutile retire sur les hotspots de la home
+- documentation alignee sur l'etat reel des fichiers et du rendu actuel
+
+### Ce qui n'a volontairement pas ete refactore
+
+- positionnement manuel des hotspots et de la video en CSS
+- structure simple de `src/app/page.tsx`, gardee telle quelle car elle reste lisible et stable
+- utilisation de `src/data/home-hero-destinations.ts` uniquement comme source de destinations, sans reintroduire l'ancien hero
 
 ## Source de verite des liens utiles
 
@@ -136,6 +162,8 @@ Retirez `output: "export"` quand le chat doit devenir une fonctionnalite publiee
 
 ## Fichiers a modifier pour faire vivre le contenu
 
+- `src/app/page.tsx`
+- `src/app/page.module.css`
 - `src/data/home-hero-destinations.ts`
 - `src/data/bobbee.json`
 - `src/data/site-content.json`
@@ -143,13 +171,13 @@ Retirez `output: "export"` quand le chat doit devenir une fonctionnalite publiee
 - `public/images/`
 
 Les utilitaires de recherche et de filtre sont centralises dans `src/lib/links.ts`.
-Le layout du hero home se regle principalement dans `src/components/HomeMediaShowcase.module.css`.
+Le placement de la carte, de la video et des zones cliquables de la home se regle dans `src/app/page.module.css`.
 
 ## Tests et verification
 
 - Le projet propose maintenant un socle de tests via Vitest
 - `src/lib/links.test.ts` couvre la recherche, le filtrage et le tri
-- Verification recente: `pnpm build` et `pnpm exec tsc --noEmit`
+- Verification recente: `pnpm exec tsc --noEmit`
 
 ## Documentation
 

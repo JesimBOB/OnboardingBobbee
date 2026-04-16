@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 
@@ -35,42 +35,6 @@ const roleOptions: Array<{
   }
 ];
 
-type BeeBadgeProps = {
-  className?: string;
-};
-
-type FlightPathProps = {
-  className: string;
-  d: string;
-};
-
-function BeeBadge({ className = "h-11 w-11 text-hive-ink" }: BeeBadgeProps) {
-  return (
-    <svg viewBox="0 0 96 96" className={className} fill="none" aria-hidden="true">
-      <ellipse cx="31" cy="30" rx="13" ry="11" fill="rgba(255,255,255,0.72)" />
-      <ellipse cx="61" cy="30" rx="13" ry="11" fill="rgba(255,255,255,0.72)" />
-      <ellipse cx="48" cy="52" rx="22" ry="19" fill="#F6C54F" />
-      <path d="M29 50c7-6 31-6 38 0" stroke="#352719" strokeWidth="5" strokeLinecap="round" />
-      <path d="M27 58c7-6 35-6 42 0" stroke="#352719" strokeWidth="5" strokeLinecap="round" />
-      <circle cx="40" cy="47" r="2.5" fill="#352719" />
-      <circle cx="56" cy="47" r="2.5" fill="#352719" />
-      <path d="M41 58c3.2 3 10.8 3 14 0" stroke="#352719" strokeWidth="4" strokeLinecap="round" />
-      <path d="M39 33l-5-10" stroke="#352719" strokeWidth="4" strokeLinecap="round" />
-      <path d="M57 33l5-10" stroke="#352719" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="33" cy="21" r="4" fill="#352719" />
-      <circle cx="63" cy="21" r="4" fill="#352719" />
-    </svg>
-  );
-}
-
-function FlightPath({ className, d }: FlightPathProps) {
-  return (
-    <svg viewBox="0 0 320 180" className={className} fill="none" aria-hidden="true">
-      <path d={d} pathLength="1" />
-    </svg>
-  );
-}
-
 function formatRoleSummary(selectedRoles: UsefulLinksRoleFilter[]): string {
   if (selectedRoles.includes("all")) {
     return "Tous les profils";
@@ -90,8 +54,8 @@ function getCategoryLabel(category: string): string {
     return "Bonnes pratiques";
   }
 
-  if (category === "Métier & analyse") {
-    return "Métier";
+  if (category === "MÃ©tier & analyse") {
+    return "MÃ©tier";
   }
 
   if (category === "Outils & collaboration") {
@@ -210,32 +174,6 @@ export default function UsefulLinksPage() {
     <div className={`container-page ${styles.pageShell}`}>
       <h1 className="sr-only">Liens utiles</h1>
 
-      <div className={`${styles.heroSearchWrap} animate-fade-up-soft`}>
-        <label className={styles.searchField}>
-          <span className="sr-only">Rechercher dans les liens utiles</span>
-          <svg
-            className={styles.searchIcon}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
-            />
-          </svg>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="Rechercher un titre, une source ou un type..."
-            className={styles.searchInput}
-          />
-        </label>
-      </div>
-
       <section
         className={`${styles.hiveSection} animate-fade-up-soft`}
         aria-labelledby="useful-links-hive-heading"
@@ -243,38 +181,44 @@ export default function UsefulLinksPage() {
         <div className={styles.hiveBgOne} aria-hidden="true" />
         <div className={styles.hiveBgTwo} aria-hidden="true" />
         <div className={styles.hiveGlow} aria-hidden="true" />
-        <div className={styles.hiveAccent} aria-hidden="true">
-          <FlightPath
-            className={`${styles.hivePath} ${styles.hivePathOne}`}
-            d="M18 128C78 104 112 34 188 42C236 46 266 84 302 22"
-          />
-          <FlightPath
-            className={`${styles.hivePath} ${styles.hivePathTwo}`}
-            d="M24 42C68 18 116 52 160 100C188 130 230 148 294 136"
-          />
-          <div className={`${styles.hiveBee} ${styles.hiveBeeOne}`}>
-            <div className={styles.hiveBeeShell}>
-              <BeeBadge className={styles.hiveBeeIcon} />
-            </div>
-          </div>
-          <div className={`${styles.hiveBee} ${styles.hiveBeeTwo}`}>
-            <div className={styles.hiveBeeShell}>
-              <BeeBadge className={styles.hiveBeeIconSmall} />
-            </div>
-          </div>
-        </div>
+        <div className={styles.hiveAccent} aria-hidden="true" />
 
         <div className={styles.hiveHeader}>
-          <p className="eyebrow">Ruche interactive</p>
           <h2
             id="useful-links-hive-heading"
             className={`text-hive-ink ${styles.hiveTitle}`}
           >
-            Choisissez un profil puis une alveole
+            Liens utiles
           </h2>
           <p className={styles.hiveLead}>
-            Une interface simple, legere et immediate pour trouver la bonne ressource.
+            Sélectionnez un document dans la barre de recherche ci-dessous ou filtrez par profil/rubrique.
           </p>
+        </div>
+
+        <div className={`${styles.heroSearchWrap} animate-fade-up-soft`}>
+          <label className={styles.searchField}>
+            <span className="sr-only">Rechercher dans les liens utiles</span>
+            <svg
+              className={styles.searchIcon}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Rechercher un titre, une source ou un type..."
+              className={styles.searchInput}
+            />
+          </label>
         </div>
 
         <section className={styles.profileTray} aria-labelledby="role-filters-heading">
@@ -282,9 +226,6 @@ export default function UsefulLinksPage() {
             <h3 id="role-filters-heading" className={`text-hive-ink ${styles.trayTitle}`}>
               Profils
             </h3>
-            <p className={styles.filterHint}>
-              Multi-selection OR. Le mode Tous reste le point de depart.
-            </p>
           </div>
 
           <div className={styles.roleGrid}>
@@ -296,7 +237,7 @@ export default function UsefulLinksPage() {
                 <button
                   key={role.id}
                   type="button"
-                  className={`${styles.roleChip} ${isActive ? styles.roleChipActive : ""}`}
+                  className={`${styles.roleChip} !min-w-[120px] ${isActive ? styles.roleChipActive : ""}`}
                   aria-pressed={isActive}
                   aria-label={`${chipLabel}. ${role.detail}`}
                   onClick={() => toggleRole(role.id)}
@@ -314,8 +255,7 @@ export default function UsefulLinksPage() {
               Rubriques
             </h3>
             <p className={styles.filterHint}>
-              Une rubrique a la fois. Recliquez sur l&apos;alveole active pour revenir a
-              toute la ruche.
+              Une rubrique à la fois. Cliquez sur une alvéole pour l’activer ou la désactiver.
             </p>
           </div>
 
@@ -345,7 +285,6 @@ export default function UsefulLinksPage() {
                         >
                           <span className={styles.categoryName}>{getCategoryLabel(category)}</span>
                           <span className={styles.categoryCount}>
-                            {isActive ? "Active | " : ""}
                             {count} lien{count > 1 ? "s" : ""}
                           </span>
                         </span>
@@ -433,3 +372,4 @@ export default function UsefulLinksPage() {
     </div>
   );
 }
+

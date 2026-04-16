@@ -1,0 +1,313 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0 3.5rem;
+  background: #fff;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0;
+}
+
+.mapPanel {
+  position: relative;
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.mapCanvas {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.mapImageWrap {
+  position: relative;
+  width: min(100%, 72rem);
+}
+
+.mapImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mapHotspot {
+  position: absolute;
+  z-index: 1;
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.001);
+  cursor: pointer;
+}
+
+.mapHotspot:focus-visible {
+  outline: none;
+}
+
+.hotspotOnboarding {
+  left: 8.6%;
+  top: 38.4%;
+  width: 21.2%;
+  height: 31.2%;
+}
+
+.hotspotBobbee {
+  left: 38%;
+  top: 25.6%;
+  width: 24.6%;
+  height: 21.8%;
+}
+
+.hotspotOrganigram {
+  left: 67.8%;
+  top: 24%;
+  width: 23.8%;
+  height: 31.8%;
+}
+
+.hotspotUsefulLinks {
+  left: 68%;
+  top: 63.2%;
+  width: 25%;
+  height: 24.8%;
+}
+
+.hotspotInstallation {
+  left: 41.2%;
+  top: 61%;
+  width: 18.6%;
+  height: 24.2%;
+}
+
+.heroVideoWrap {
+  position: absolute;
+  top: 1%;
+  left: 47.9%;
+  width: clamp(6.75rem, 18vw, 13.75rem);
+  aspect-ratio: 16 / 10;
+  transform: translateX(-50%);
+  overflow: visible;
+  background: transparent;
+  isolation: isolate;
+}
+
+.clickHint {
+  position: absolute;
+  bottom: -1.2rem;
+  left: 50%;
+  z-index: 2;
+  padding: 0.34rem 0.72rem;
+  border: 2px solid rgba(47, 90, 30, 0.96);
+  border-radius: 999px;
+  background: #b8ec72;
+  color: #234517;
+  font-family: var(--font-display), serif;
+  font-size: clamp(0.74rem, 1vw, 0.92rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transform: translateX(-50%) rotate(5deg);
+  box-shadow:
+    0 0.24rem 0 rgba(47, 90, 30, 0.92),
+    0 0.7rem 1.1rem rgba(47, 90, 30, 0.18);
+  pointer-events: none;
+}
+
+.clickHint::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -0.58rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-left: 2px solid rgba(47, 90, 30, 0.96);
+  border-top: 2px solid rgba(47, 90, 30, 0.96);
+  background: #b8ec72;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.heroVideoWrap[data-started="true"] .clickHint {
+  opacity: 0;
+  transform: translateX(-50%) translateY(0.35rem) rotate(7deg);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.heroVideoWrap::after {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0) 34%,
+      rgba(255, 248, 234, 0.08) 52%,
+      rgba(255, 243, 220, 0.22) 68%,
+      rgba(255, 251, 243, 0.56) 84%,
+      rgba(255, 255, 255, 0.96) 100%
+    );
+  filter: blur(clamp(0.4rem, 0.8vw, 0.8rem));
+}
+
+.heroVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  filter: saturate(0.98) contrast(1.02);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 34%,
+    rgba(0, 0, 0, 0.98) 48%,
+    rgba(0, 0, 0, 0.9) 62%,
+    rgba(0, 0, 0, 0.62) 76%,
+    rgba(0, 0, 0, 0.24) 88%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 34%,
+    rgba(0, 0, 0, 0.98) 48%,
+    rgba(0, 0, 0, 0.9) 62%,
+    rgba(0, 0, 0, 0.62) 76%,
+    rgba(0, 0, 0, 0.24) 88%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 1024px) {
+  .mapPanel {
+    width: min(100%, 64rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .mapPanel {
+    width: 100%;
+  }
+
+  .hotspotOnboarding {
+    left: 8.4%;
+    top: 38.2%;
+    width: 21.8%;
+    height: 31.6%;
+  }
+
+  .hotspotBobbee {
+    left: 37.6%;
+    top: 25.5%;
+    width: 25%;
+    height: 22.2%;
+  }
+
+  .hotspotOrganigram {
+    left: 67.4%;
+    top: 23.9%;
+    width: 24.4%;
+    height: 32.1%;
+  }
+
+  .hotspotUsefulLinks {
+    left: 67.7%;
+    top: 63.1%;
+    width: 25.5%;
+    height: 25.2%;
+  }
+
+  .hotspotInstallation {
+    left: 40.8%;
+    top: 60.8%;
+    width: 19.2%;
+    height: 24.8%;
+  }
+
+  .heroVideoWrap {
+    top: 1.4%;
+    left: 47.7%;
+    width: clamp(6.25rem, 22vw, 11rem);
+  }
+
+  .clickHint {
+    bottom: -1.05rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 0.75rem 0 2.5rem;
+  }
+
+  .hotspotOnboarding {
+    left: 8.1%;
+    top: 38%;
+    width: 22.6%;
+    height: 32.4%;
+    border-radius: 1.3rem;
+  }
+
+  .hotspotBobbee {
+    left: 37.1%;
+    top: 25.1%;
+    width: 26%;
+    height: 23%;
+    border-radius: 1.3rem;
+  }
+
+  .hotspotOrganigram {
+    left: 66.9%;
+    top: 23.6%;
+    width: 25.3%;
+    height: 32.8%;
+    border-radius: 1.3rem;
+  }
+
+  .hotspotUsefulLinks {
+    left: 67.1%;
+    top: 62.9%;
+    width: 26.4%;
+    height: 26.1%;
+    border-radius: 1.3rem;
+  }
+
+  .hotspotInstallation {
+    left: 40.2%;
+    top: 60.5%;
+    width: 20.3%;
+    height: 25.4%;
+    border-radius: 1.3rem;
+  }
+
+  .heroVideoWrap {
+    top: 2%;
+    left: 47.6%;
+    width: clamp(5.5rem, 24vw, 8.5rem);
+  }
+
+  .clickHint {
+    bottom: -0.92rem;
+    padding: 0.28rem 0.56rem;
+    border-width: 1.5px;
+    box-shadow:
+      0 0.18rem 0 rgba(47, 90, 30, 0.92),
+      0 0.45rem 0.8rem rgba(47, 90, 30, 0.18);
+  }
+
+  .clickHint::after {
+    top: -0.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-left-width: 1.5px;
+    border-top-width: 1.5px;
+  }
+}

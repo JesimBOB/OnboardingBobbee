@@ -13,9 +13,9 @@ const content = siteContent as SiteContent;
 const bobbeeData = content.bobbee;
 
 const historyParagraphs = [
-  "Apr\u00e8s des ann\u00e9es de frustrations, une expert-comptable et un chef d'entreprise ont vu l'opportunit\u00e9 de d\u00e9velopper l'outil qui allait changer le quotidien de leurs pairs.",
-  "Le monde comptable et financier est vou\u00e9 \u00e0 \u00e9voluer et les solutions qui l'accompagnent \u00e9galement. bobbee est n\u00e9 pour venir en r\u00e9ponse \u00e0 toutes les probl\u00e9matiques rencontr\u00e9es par les cabinets comptables et les entreprises.",
-  "En \u00e9t\u00e9 2024, bobbee int\u00e8gre le Groupe ISAGRI, un acteur majeur des logiciels de gestion pour les experts comptables et les entreprises. Il s'agit d'une alliance industrielle et digitale essentielle pour r\u00e9pondre aux enjeux de gestion des entreprises et des experts-comptables."
+  "Après des années de frustrations terrain, une experte-comptable et un chef d’entreprise ont décidé de créer l’outil qu’ils auraient aimé avoir au quotidien.",
+  "BOBBEE est né pour simplifier la vie des cabinets et des entreprises, en répondant concrètement aux problèmes rencontrés sur le terrain.",
+  "En 2024, BOBBEE rejoint le groupe ISAGRI pour accélérer cette ambition et construire une solution encore plus robuste."
 ];
 
 const historyImageCandidates = [
@@ -66,7 +66,14 @@ export default function BobbeePage() {
       <section id="histoire" className="mx-auto max-w-5xl space-y-8">
         <h1 className="sr-only">Notre histoire</h1>
 
-        <div className="overflow-hidden rounded-3xl border border-hive-line/60 bg-white shadow-card">
+        <h2 className="text-center text-2xl font-semibold tracking-tight text-hive-ink sm:text-3xl">
+          Pourquoi BOBBEE existe
+        </h2>
+
+        <div
+          className="overflow-hidden rounded-3xl border border-hive-line/60 bg-white shadow-card"
+          style={{ borderRadius: "1.5rem" }}
+        >
           <img
             src={historyImageSrc}
             alt="Les fondateurs historiques de bobbee"
@@ -74,7 +81,10 @@ export default function BobbeePage() {
           />
         </div>
 
-        <div className="panel space-y-5 p-6 sm:p-8">
+        <div
+          className="panel space-y-5 p-6 sm:p-8"
+          style={{ borderRadius: "1.5rem" }}
+        >
           {historyParagraphs.map((paragraph) => (
             <p
               key={paragraph}
@@ -85,12 +95,24 @@ export default function BobbeePage() {
           ))}
         </div>
 
-        <div className="overflow-hidden rounded-3xl border border-white/70 bg-white shadow-card">
+        <p
+          className="text-center text-base leading-7 text-hive-ink/80 sm:text-lg"
+          style={{ marginTop: "1.5rem" }}
+        >
+          Et pour t’accompagner dans ton onboarding, fais connaissance avec Bobby 👇
+        </p>
+
+        <div
+          className="overflow-hidden rounded-3xl border border-white/70 bg-white shadow-card"
+          style={{ borderRadius: "1.5rem" }}
+        >
+          <p className="px-6 pt-5 text-center text-sm font-medium text-hive-ink/65 sm:px-8">
+            Ton guide pour démarrer
+          </p>
           <video
             className="aspect-video w-full object-cover"
             controls
             preload="metadata"
-            poster="/images/BOBBEE.jpg"
             aria-label="Video de presentation de bobbee"
           >
             <source src={bobbeeData.presentationVideoSrc} />

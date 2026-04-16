@@ -26,7 +26,6 @@ export const viewport: Viewport = {
 
 const navigation = [
   { href: "/", label: "Accueil" },
-  { href: "/bobbee", label: "BOBBEE" },
   { href: "/liens-utiles", label: "Liens utiles" }
 ];
 
@@ -47,7 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 </span>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-honey-700 sm:text-[0.7rem]">
-                    Portail d&apos;onboarding
+                    Accueil portail d&apos;onboarding
                   </p>
                   <p className="font-display text-xl leading-none sm:text-[1.8rem]">BOBBEE</p>
                 </div>

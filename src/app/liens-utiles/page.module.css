@@ -509,12 +509,12 @@
   appearance: none;
   border: 1px solid rgba(124, 81, 18, 0.22);
   border-radius: 999px;
-  padding: 0.76rem 1.08rem;
+  padding: 0.9rem 2.4rem;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 238, 0.9));
   color: #4a3412;
   cursor: pointer;
-  font-size: 0.89rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1;
   text-align: center;
@@ -561,8 +561,8 @@
 }
 
 .categoryHive {
-  --hex-width: clamp(11rem, 17vw, 13.25rem);
-  --hex-overlap: clamp(2.35rem, 3.2vw, 3rem);
+  --hex-width: clamp(10.25rem, 15.9vw, 12.35rem);
+  --hex-overlap: clamp(2.05rem, 2.9vw, 2.7rem);
   position: relative;
   z-index: 1;
   display: grid;
@@ -574,7 +574,7 @@
 .categoryRow {
   display: flex;
   justify-content: center;
-  gap: clamp(0.45rem, 1vw, 0.75rem);
+  gap: clamp(0.6rem, 1.1vw, 0.9rem);
   width: 100%;
 }
 
@@ -602,17 +602,19 @@
 }
 
 .categoryButton:focus-visible {
-  outline: 2px solid rgba(109, 68, 13, 0.82);
+  outline: 2px solid rgba(132, 82, 18, 0.86);
   outline-offset: 5px;
   border-radius: 1.55rem;
 }
 
 .categoryButton:focus-visible .categorySurface {
-  transform: translateY(-2px) scale(1.01);
+  transform: translateY(-2px) scale(1.012);
+  border-color: rgba(210, 136, 30, 0.78);
   box-shadow:
-    inset 0 0 0 1px rgba(230, 156, 44, 0.88),
-    0 0 0 5px rgba(252, 236, 179, 0.78),
-    0 18px 28px rgba(140, 92, 22, 0.14);
+    inset 0 0 0 1px rgba(239, 192, 104, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 0 4px rgba(252, 236, 179, 0.72),
+    0 18px 30px rgba(140, 92, 22, 0.16);
 }
 
 .categorySurface {
@@ -624,20 +626,23 @@
   justify-content: center;
   gap: 1.18rem;
   padding: 1.62rem 1.3rem 1.72rem;
-  color: #352719;
+  color: #322012;
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%);
+  border: 1px solid rgba(197, 131, 33, 0.62);
   background:
-    linear-gradient(180deg, rgba(255, 252, 244, 0.995), rgba(255, 235, 178, 0.985)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(242, 197, 89, 0.05));
+    linear-gradient(180deg, rgba(255, 239, 191, 0.995), rgba(244, 183, 58, 0.992)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(203, 122, 19, 0.08));
   box-shadow:
-    inset 0 0 0 1px rgba(226, 191, 113, 0.95),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -0.95rem 1.55rem rgba(242, 197, 89, 0.09),
-    0 16px 24px rgba(53, 39, 25, 0.08);
+    inset 0 0 0 1px rgba(248, 217, 146, 0.78),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1rem 1.55rem rgba(184, 109, 20, 0.14),
+    0 16px 26px rgba(111, 70, 18, 0.14),
+    0 0 18px rgba(233, 155, 34, 0.1);
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
     background 180ms ease,
+    border-color 180ms ease,
     opacity 180ms ease;
 }
 
@@ -658,33 +663,37 @@
   inset: auto 17% 12%;
   height: 2.15rem;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(242, 197, 89, 0.18), rgba(242, 197, 89, 0));
+  background: radial-gradient(circle, rgba(239, 171, 46, 0.24), rgba(239, 171, 46, 0));
   pointer-events: none;
 }
 
 .categoryButton:hover .categorySurface {
-  transform: translateY(-3px) scale(1.018);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(210, 136, 30, 0.74);
   background:
-    linear-gradient(180deg, rgba(255, 253, 246, 0.995), rgba(255, 229, 153, 0.985)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(242, 197, 89, 0.1));
+    linear-gradient(180deg, rgba(255, 242, 199, 0.995), rgba(246, 187, 64, 0.995)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(211, 126, 18, 0.1));
   box-shadow:
-    inset 0 0 0 1px rgba(242, 197, 89, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -0.9rem 1.4rem rgba(242, 197, 89, 0.1),
-    0 14px 22px rgba(140, 92, 22, 0.12);
+    inset 0 0 0 1px rgba(244, 202, 120, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    inset 0 -1rem 1.5rem rgba(189, 115, 23, 0.16),
+    0 18px 28px rgba(125, 80, 20, 0.17),
+    0 0 20px rgba(236, 154, 28, 0.12);
 }
 
 .categoryActive {
-  transform: translateY(-2px) scale(1.022);
+  transform: translateY(-3px) scale(1.022);
+  border-color: rgba(193, 117, 17, 0.8);
   background:
-    linear-gradient(180deg, rgba(255, 246, 210, 0.995), rgba(244, 192, 88, 0.995)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(230, 156, 44, 0.1));
+    linear-gradient(180deg, rgba(255, 236, 184, 0.995), rgba(236, 162, 38, 0.995)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(197, 103, 13, 0.12));
   box-shadow:
-    inset 0 0 0 1px rgba(230, 156, 44, 0.94),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -0.95rem 1.45rem rgba(230, 156, 44, 0.12),
-    0 0 0 5px rgba(252, 236, 179, 0.8),
-    0 16px 26px rgba(140, 92, 22, 0.16);
+    inset 0 0 0 1px rgba(246, 209, 133, 0.84),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    inset 0 -1.05rem 1.6rem rgba(170, 92, 16, 0.18),
+    0 0 0 4px rgba(252, 236, 179, 0.72),
+    0 20px 30px rgba(125, 77, 18, 0.18),
+    0 0 24px rgba(236, 154, 28, 0.16);
 }
 
 .categoryDisabled {
@@ -692,7 +701,8 @@
 }
 
 .categoryDisabled .categorySurface {
-  opacity: 0.56;
+  opacity: 0.6;
+  border-color: rgba(206, 170, 110, 0.46);
   background:
     linear-gradient(180deg, rgba(255, 254, 248, 0.98), rgba(250, 243, 223, 0.94)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(242, 197, 89, 0.04));
@@ -705,14 +715,21 @@
 .categoryName {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   max-width: 9.3rem;
-  font-family: var(--font-display), serif;
+  font-family: Inter, system-ui, sans-serif;
   font-size: clamp(1.24rem, 0.76vw + 0.98rem, 1.62rem);
-  font-weight: 700;
+  font-weight: 750;
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   text-align: center;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.45);
+  text-shadow:
+    0 1px 0 rgba(255, 250, 235, 0.42),
+    0 6px 10px rgba(140, 92, 22, 0.12);
 }
 
 .categoryCount {
@@ -722,15 +739,16 @@
   align-items: center;
   justify-content: center;
   align-self: center;
+  margin-top: auto;
   border-radius: 999px;
-  padding: 0.4rem 0.72rem;
+  padding: 0.41rem 0.74rem;
   background:
-    linear-gradient(180deg, rgba(255, 253, 246, 0.96), rgba(255, 243, 210, 0.92));
-  border: 1px solid rgba(214, 177, 98, 0.5);
+    linear-gradient(180deg, rgba(255, 250, 236, 0.96), rgba(253, 226, 165, 0.94));
+  border: 1px solid rgba(201, 145, 53, 0.46);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.78),
-    0 6px 12px rgba(140, 92, 22, 0.08);
-  color: rgba(53, 39, 25, 0.88);
+    0 7px 12px rgba(140, 92, 22, 0.1);
+  color: rgba(54, 35, 16, 0.92);
   font-size: 0.74rem;
   font-weight: 800;
   line-height: 1;
@@ -941,8 +959,8 @@
 
 @media (max-width: 1100px) {
   .categoryHive {
-    --hex-width: clamp(10rem, 21vw, 11.8rem);
-    --hex-overlap: 2.25rem;
+    --hex-width: clamp(9.35rem, 19.6vw, 11rem);
+    --hex-overlap: 1.95rem;
   }
 
   .toolbar {
@@ -956,12 +974,12 @@
   }
 
   .categoryHive {
-    --hex-width: clamp(8.9rem, 25vw, 10.2rem);
-    --hex-overlap: 1.7rem;
+    --hex-width: clamp(8.3rem, 23.3vw, 9.5rem);
+    --hex-overlap: 1.45rem;
   }
 
   .categoryRow {
-    gap: 0.45rem;
+    gap: 0.55rem;
   }
 
   .hiveBeeTwo,
@@ -991,8 +1009,8 @@
   }
 
   .categoryHive {
-    --hex-width: min(100%, 9.2rem);
-    --hex-overlap: 0.6rem;
+    --hex-width: min(100%, 8.7rem);
+    --hex-overlap: 0.5rem;
     gap: 0.5rem;
     padding-bottom: 0.25rem;
   }
@@ -1000,8 +1018,8 @@
   .categoryRow {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.55rem;
-    width: min(100%, 19.5rem);
+    gap: 0.65rem;
+    width: min(100%, 18.35rem);
   }
 
   .categoryRow + .categoryRow {
@@ -1011,7 +1029,7 @@
   .categoryRow[data-columns="3"] .categoryWrap:last-child,
   .categoryRow[data-columns="1"] .categoryWrap {
     grid-column: 1 / -1;
-    width: min(100%, 9.2rem);
+    width: min(100%, 8.7rem);
     margin: 0 auto;
   }
 

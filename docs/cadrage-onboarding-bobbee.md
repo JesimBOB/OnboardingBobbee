@@ -2,7 +2,7 @@
 
 Ce document conserve l'intention produit du portail et la replace dans l'etat reel du repo.
 
-## Etat du repo au 2026-04-10
+## Etat du repo au 2026-04-14
 
 ### Livre
 
@@ -35,11 +35,36 @@ Construire un mini portail d'onboarding BOBBEE, simple et chaleureux, pour aider
 ## V1 cible
 
 - Portail visuel en Next.js
-- Page d'accueil avec medias et acces rapides
+- Page d'accueil avec carte illustree et acces rapides
 - Page de presentation BOBBEE
 - Page de liens utiles avec recherche et filtres
 - Assistant borne aux ressources locales
 - Hebergement simple et rapide pour la demo
+
+## Version actuelle de la home
+
+La home actuellement validee repose sur une logique volontairement simple :
+
+- une grande illustration centrale `BOBBEE land`
+- un fond blanc avec tres peu d'habillage additionnel
+- une video integree dans l'image, lancee au clic et non bouclee
+- cinq zones cliquables qui servent d'entrees directes vers les parcours utiles
+
+Cette version assume une priorite forte sur la lisibilite immediate. La home ne cherche pas a tout raconter ; elle sert surtout de point d'entree visuel.
+
+### Ce que cette version privilegie
+
+- comprehension rapide du portail
+- repere visuel unique et memorable
+- acces directs vers les parcours les plus utiles
+- faible charge cognitive au premier affichage
+
+### Ce qui reste volontairement hors scope
+
+- cartes additionnelles ou blocs de texte supplementaires
+- moteur de configuration des hotspots
+- refonte generique du comportement video
+- refactorisation large de la home sans besoin fonctionnel immediat
 
 ## Contraintes assumees en V1
 
